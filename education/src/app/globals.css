@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+:root {
+    --font-primary: Poppins, sans-serif;
+    --font-secondary: Nunito Sans, sans-serif;
+  }
+  
+  .font-primary {
+    font-family: var(--font-primary);
+  }
+  
+  .font-secondary {
+    font-family: var(--font-secondary);
+  }
