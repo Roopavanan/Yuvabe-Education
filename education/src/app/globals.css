@@ -12,3 +12,19 @@
   .font-secondary {
     font-family: var(--font-secondary);
   }
+
+  /* .motto-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 2px;
+  height: 700px;
+  background: repeating-linear-gradient(
+    to bottom,
+    black 0px,
+    black 10px,
+    transparent 10px,
+    transparent 20px
+  );
+} */

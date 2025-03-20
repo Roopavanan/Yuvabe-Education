@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins, Nunito_Sans } from "next/font/google";
 import "./globals.css";
-
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -29,7 +30,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${nunitoSans.variable} antialiased`}
       >
-        {children}
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
       </body>
     </html>
   );
