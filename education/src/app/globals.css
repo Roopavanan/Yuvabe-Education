@@ -1,30 +1,49 @@
 @import "tailwindcss";
 
 :root {
-    --font-primary: Poppins, sans-serif;
-    --font-secondary: Nunito Sans, sans-serif;
-  }
-  
-  .font-primary {
-    font-family: var(--font-primary);
-  }
-  
-  .font-secondary {
-    font-family: var(--font-secondary);
-  }
+  --font-primary: Poppins, sans-serif;
+  --font-secondary: Nunito Sans, sans-serif;
+  --background-color-bridge: #EBF8FB;
+  --accent-color-bridge: #33BED4;
+}
 
-  /* .motto-section::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 20px;
-  width: 2px;
-  height: 700px;
-  background: repeating-linear-gradient(
-    to bottom,
-    black 0px,
-    black 10px,
-    transparent 10px,
-    transparent 20px
-  );
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+}
+
+.bg-color {
+  background-color: #FFF9EA;
+}
+
+.border-radius-18 {
+  border-radius: 18.33px;
+}
+
+.border-radius-1240 {
+  border-radius: 12.23px 40.76px;
+}
+
+.box-shadow-default {
+  box-shadow: 6.52088px 6.52088px 35.0497px rgba(0, 0, 0, 0.1);
+}
+
+.box-shadow-secondary {
+  box-shadow: 6.92682px 6.92682px 37.2317px rgba(0, 0, 0, 0.1);
+}
+
+/* .blog-list-block>div:nth-child(5) {
+  background-color: #592AC7;
+}
+
+.blog-list-block>div:nth-child(5)>div:nth-child(2)>p,
+.blog-list-block>div:nth-child(5)>div:nth-child(2)>h2 {
+  color: white;
 } */
+
+.blog-list-block>div:nth-child(3n+2)>.blog-list-image {
+  border-radius: 40.76px 12.23px;
+}

@@ -1,0 +1,34 @@
+query getAllposts {
+  posts(where: {status: PUBLISH}, first: 9) {
+    edges {
+      node {
+        id
+        categories {
+          nodes {
+            categoryId
+            name
+          }
+        }
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+          }
+        }
+        featuredPost {
+          featuredPost
+          fieldGroupName
+        }
+        date
+        slug
+        title
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+  }
+}
