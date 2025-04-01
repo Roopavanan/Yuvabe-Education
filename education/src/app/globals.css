@@ -15,6 +15,57 @@
   font-family: var(--font-secondary);
 }
 
+
+@layer utilities {
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(30px, 1fr));
+    gap: 6px;
+  }
+
+  .calendar-day {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .calendar-day.active {
+    background-color: #592AC7;
+    color: white;
+  }
+
+  .calendar-day.highlight {
+    background-color: #8B5CF6;
+    color: white;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .program-card {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.4s ease-out;
+  }
+
+  .program-card.hidden {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  .program-card.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .bg-color {
   background-color: #FFF9EA;
 }

@@ -15,17 +15,14 @@ import "swiper/css/pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import MottoSection from "@/components/MottoSection";
 
 const logos = [
-  "/images/clientlogo/axn.png",
-  "/images/clientlogo/google.png",
-  "/images/clientlogo/slack.png",
-  "/images/clientlogo/lenovo.png",
-  "/images/clientlogo/microsoft.png",
-  "/images/clientlogo/axn.png",
-  "/images/clientlogo/google.png",
-  "/images/clientlogo/slack.png",
-  "/images/clientlogo/lenovo.png",
+  "/images/clientlogo/deepanam.svg",
+  "/images/clientlogo/playto.svg",
+  "/images/clientlogo/agastya.svg",
+  "/images/clientlogo/playto.svg",
+  "/images/clientlogo/agastya.svg",
   "/images/clientlogo/microsoft.png",
 ];
 
@@ -96,50 +93,71 @@ export default function Home() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="bg-[#FFF9EA] min-h-screen flex items-center">
-        <div className="container mx-auto px-6 lg:px-20 flex flex-col-reverse lg:flex-row items-start">
-          {/* Image First in Mobile, Second in Desktop */}
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="order-1 lg:order-2 w-full lg:w-1/2 flex justify-center mt-10 lg:mt-0"
-          >
-            <Image
-              src="/images/hero.png"
-              alt="Hero Image"
-              width={500}
-              height={400}
-              className="rounded-lg"
-            />
-          </motion.div>
 
-          {/* Text Second in Mobile, First in Desktop */}
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="order-2 lg:order-1 w-full lg:w-1/2 text-center lg:text-left"
+      <section className="relative flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-12 bg-[#FDF8EE] min-h-[800px]">
+        {/* Right Side - Text (Appears First on Mobile, Second on Desktop) */}
+        <motion.div
+          className="w-full md:w-1/2 text-center md:text-left order-1 md:order-2"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-4xl md:text-[64px] font-semibold font-primary text-black leading-tight pt-16 md:pt-0">
+            Empowering Minds, <br />
+            <span className="text-[#592AC7]">Bridging Futures</span>
+          </h1>
+          <p className="mt-4 text-gray-700 max-w-xl font-secondary text-[18px]">
+            Empowering young adults with practical skills, hands-on experience,
+            and a purpose-driven community to thrive in a dynamic world.
+          </p>
+          <motion.a
+            href="#"
+            className="mt-6 inline-block px-6 py-3 text-white bg-[#592AC7] rounded-lg shadow-md hover:bg-purple-700 transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <h1 className="text-4xl lg:text-6xl font-semibold font-primary text-gray-900">
-              Empowering Minds, <br />
-              <span className="text-[#592AC7]">Bridging Futures</span>
-            </h1>
-            <p className="text-gray-700 mt-4 text-[12px] lg:text-[18px] md:text-[16px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fit your
-              coursework around your existing obligations.
-            </p>
-            <button className="mt-6 px-6 py-3 bg-[#592AC7] text-white font-medium rounded-[15px]">
-              Know More
-            </button>
-          </motion.div>
-        </div>
+            Know More
+          </motion.a>
+        </motion.div>
+
+        {/* Left Side - Image (Appears Second on Mobile, First on Desktop) */}
+        <motion.div
+          className="relative w-full md:w-1/2 flex justify-center md:justify-start order-2 md:order-1"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="relative">
+            <motion.div
+              className="absolute top-10 left-40 md:top-10 md:left-85 w-26 h-26 bg-[#91C644] rounded-full"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            ></motion.div>
+
+            <motion.div
+              className="absolute bottom-5 left-40 md:bottom-20 md:left-100 w-0 h-0 
+                border-l-[46px] border-r-[46px] 
+                border-b-[82px] border-transparent 
+              border-b-[#F8A91E] z-10"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            ></motion.div>
+
+            <Image
+              src="/images/hero1.svg"
+              alt="Group working on laptop"
+              width={550}
+              height={400}
+              className="relative mx-auto md:mx-0  w-full max-w-[550px] h-auto top-18 -left-18 md:top-18 md:-left-18 lg:top-32 lg:-left-18"
+            />
+          </div>
+        </motion.div>
       </section>
 
+      {/* Hero section End */}
+
       {/* Client Logo Slider */}
-      <section className="bg-white py-10  shadow-lg  backdrop-blur-lg">
+      <section className="bg-white py-10 shadow-lg backdrop-blur-lg">
         <div className="w-full mx-auto px-4">
           {/* <Slider {...settings}>
             {logos.map((logo, index) => (
@@ -149,83 +167,76 @@ export default function Home() {
                   alt={`Client logo ${index + 1}`}
                   width={150}
                   height={75}
-                  className="mx-auto object-contain"
+                  className="mx-auto object-contain transition duration-300 grayscale hover:grayscale-0"
                 />
               </div>
             ))}
           </Slider> */}
         </div>
       </section>
+      {/* client logo slider End */}
 
       {/* Our story */}
-      <section className="bg-white py-16 shadow-md shadow-gray-300 overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-20">
+      <section className="bg-white py-10 md:py-12 shadow-md shadow-gray-300 overflow-hidden">
+        <div className="max-w-8xl mx-auto px-6 md:px-10 lg:px-20">
           {/* Centered Heading */}
           <motion.h2
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center text-[64px] font-primary font-semibold text-gray-900 mb-10"
+            className="text-center text-4xl md:text-5xl lg:text-6xl font-primary font-semibold text-gray-900 mb-8 md:mb-10"
           >
             Our Story
           </motion.h2>
 
-          <div className="flex flex-col lg:flex-row items-center">
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-10">
             {/* Left Side - Text */}
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="lg:w-1/2 text-left"
+              className="w-full lg:w-1/2 text-left"
             >
-              <h3 className="text-[36px] font-bold text-gray-800 mb-4">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
                 Yuvabe Education: <br /> Unleashing Potential <br /> Through
                 Holistic Growth
               </h3>
-              <p className="text-gray-700 text-[18px] mb-4">
+              <p className="text-gray-700 text-base md:text-lg mb-4">
                 At Yuvabe Education in Auroville, we believe in the immense
-                <br />
-                potential innate in every individual, especially the youth. The{" "}
-                <br /> challenge lies not in capability but in providing access
-                to the <br />
+                potential innate in every individual, especially the youth. The
+                challenge lies not in capability but in providing access to the
                 right resources to unlock this potential. Our mission is to
-                provide <br /> young adults, the future of our society, and
-                lifelong learners with a <br />
-                transformative platform that fosters self-awareness, growth,{" "}
-                <br />
-                and empowerment.{" "}
+                provide young adults, the future of our society, and lifelong
+                learners with a transformative platform that fosters
+                self-awareness, growth, and empowerment.
               </p>
-              <p className="text-gray-700 text-[18px]">
-                Yuvabe Education was born out of a deep commitment to <br />
-                empowering individuals. We start with external growth areas like
-                <br />
-                acquiring technical and career skills and evolve toward inward{" "}
-                <br />
-                exploration, where true potential lies. Our holistic approach{" "}
-                <br /> emphasizes not just professional success but also
-                personal
-                <br /> fulfillment and happiness.{" "}
+              <p className="text-gray-700 text-base md:text-lg">
+                Yuvabe Education was born out of a deep commitment to empowering
+                individuals. We start with external growth areas like acquiring
+                technical and career skills and evolve toward inward
+                exploration, where true potential lies. Our holistic approach
+                emphasizes not just professional success but also personal
+                fulfillment and happiness.
               </p>
             </motion.div>
 
-            {/* Right Side - Image with Decorative Elements */}
+            {/* Right Side - Image */}
             <motion.div
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="lg:w-1/2 flex justify-center mt-10 lg:mt-0 relative"
+              className="w-full lg:w-1/2 flex justify-center"
             >
-              <div className="relative w-[400px] h-[300px]">
-                {/* Image */}
+              <div className="relative w-[280px] md:w-[480px] h-[200px] md:h-[600px]">
                 <Image
-                  src="/images/home/story.svg"
+                  src="/images/home/story2.svg"
                   alt="Our Story"
-                  width={600}
-                  height={400}
-                  className="rounded-lg"
+                  width={800}
+                  height={600}
+                  className="rounded-lg w-full h-full "
                 />
               </div>
             </motion.div>
@@ -233,23 +244,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* our story End */}
+
       {/* Through program */}
-      <section className="bg-[#FFF9EA] py-14 overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center">
+      <section className="bg-[#FFF9EA] py-12 overflow-hidden">
+        <div className="container max-w-screen-xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center">
           {/* Left Side - Image */}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="lg:w-1/2 flex justify-center mt-18 lg:mt-14 items-center"
+            className="lg:w-1/2 flex justify-center items-center mb-10 lg:mb-0"
           >
             <Image
-              src="/images/home/pro.svg"
+              src="/images/home/thr.svg"
               alt="Children Learning"
               width={500}
               height={350}
-              className="items-center"
+              className="w-[280px] md:w-[480px] h-auto max-w-full"
             />
           </motion.div>
 
@@ -261,28 +274,23 @@ export default function Home() {
             viewport={{ once: true }}
             className="lg:w-1/2 text-left lg:pl-12"
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
               Through programs like:
             </h2>
-            <ul className="list-disc list-inside text-gray-700 space-y-4 leading-8">
+            <ul className="list-disc list-inside text-gray-700 space-y-4 leading-7 md:leading-8">
               <li>
                 <strong>The STEAM Program (ages 7-14):</strong> Building a
-                strong
-                <br />
-                foundation in Science, Technology, Engineering, Arts, and
-                <br />
+                strong foundation in Science, Technology, Engineering, Arts, and
                 Math, inspiring curiosity and critical thinking in young minds.
               </li>
               <li>
                 <strong>The Bridge Program (ages 20+):</strong> A launchpad for
-                young <br />
-                adults, focused on skill-building, career readiness, and
+                young adults, focused on skill-building, career readiness, and
                 self-discovery.
               </li>
             </ul>
-            <p className="text-gray-700 mt-6">
+            <p className="text-gray-700 mt-6 text-base md:text-lg">
               We plant the seeds of growth at an early age and nurture them
-              <br />
               throughout life’s journey.
             </p>
           </motion.div>
@@ -320,7 +328,15 @@ export default function Home() {
               journey.
             </p>
 
-            <Button href="/donate">Know More</Button>
+            {/* <Button href="/donate">Know More</Button> */}
+            <motion.a
+              href="#"
+              className="mt-6 inline-block px-6 py-3 text-white bg-[#592AC7] rounded-lg shadow-md hover:bg-purple-700 transition"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Know More
+            </motion.a>
           </motion.div>
 
           {/* Right: Image Content */}
@@ -333,7 +349,7 @@ export default function Home() {
           >
             <div className="relative">
               <Image
-                src="/images/home/join.svg"
+                src="/images/home/joinus.svg"
                 alt="Join the mission"
                 width={500}
                 height={500}
@@ -396,7 +412,7 @@ export default function Home() {
           >
             <div className="relative w-full max-w-[90%] md:max-w-[600px] lg:max-w-[800px]">
               <Image
-                src="/images/home/vision.svg"
+                src="/images/home/misvis.svg"
                 alt="Vision Mission"
                 layout="responsive"
                 width={800}
@@ -409,33 +425,31 @@ export default function Home() {
       </section>
 
       {/* Work, serve & evolve */}
-
-      <section className="bg-white py-16 px-6">
+      <section className="bg-white py-16 px-6 min-h-screen flex items-center justify-center">
         <div className="container max-w-screen-lg mx-auto text-center">
-          <h2 className="text-4xl font-semibold font-primary mb-12 text-[64px]">
+          <h2 className="text-4xl font-semibold font-primary text-[64px]">
             Our Motto
           </h2>
 
           {/* Zig-Zag Line SVG */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-1000  hidden md:block">
+          <div className="absolute left-1/2 -translate-x-1/2 top-950 hidden md:block">
             <Image
-              src="/images/home/linearrow.svg"
-              alt="Zigzag Line"
+              src="/images/home/plane2.gif"
+              alt="Paper Plane"
               width={600}
               height={600}
             />
           </div>
 
-          <div className="space-y-22 ">
+          <div className="space-y-28 mt-16">
             {/* Work Section */}
-
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex flex-col md:flex-row items-center gap-28 relative"
+              className="flex flex-col md:flex-row items-center gap-16"
             >
-              <div className="md:w-1/2 space-y-4 text-left">
+              <div className="md:w-3/4 space-y-4 text-left">
                 <h3 className="text-[36px] font-semibold font-primary">Work</h3>
                 <p className="text-gray-600 font-secondary text-[18px] mb-6">
                   To nurture a generation of self-aware, skilled, and
@@ -444,12 +458,12 @@ export default function Home() {
                 </p>
                 <Button href="#">Read more</Button>
               </div>
-              <div className="md:w-1/2 relative">
+              <div className="md:w-1/2 flex justify-center">
                 <Image
                   src="/images/home/work.svg"
                   alt="Work"
-                  width={400}
-                  height={300}
+                  width={600}
+                  height={600}
                 />
               </div>
             </motion.div>
@@ -459,9 +473,9 @@ export default function Home() {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex flex-col md:flex-row-reverse items-center gap-28 relative"
+              className="flex flex-col md:flex-row-reverse items-center gap-18"
             >
-              <div className="md:w-1/2 space-y-4 text-left">
+              <div className="md:w-3/4 space-y-4 text-left">
                 <h3 className="text-[36px] font-semibold font-primary">
                   Serve
                 </h3>
@@ -472,12 +486,10 @@ export default function Home() {
                 </p>
                 <Button href="#">Read more</Button>
               </div>
-              <div className="md:w-1/2 relative">
+              <div className="md:w-1/2 flex justify-center relative">
                 <motion.div
                   className="absolute -top-0 -left-6 w-16 h-16 bg-green-400 rounded-full"
-                  animate={{
-                    y: [0, -10, 0],
-                  }}
+                  animate={{ y: [0, -10, 0] }}
                   transition={{
                     duration: 2,
                     repeat: Infinity,
@@ -485,12 +497,11 @@ export default function Home() {
                     ease: "easeInOut",
                   }}
                 />
-
                 <Image
                   src="/images/home/serve.svg"
                   alt="Serve"
-                  width={400}
-                  height={300}
+                  width={600}
+                  height={600}
                 />
               </div>
             </motion.div>
@@ -500,9 +511,9 @@ export default function Home() {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex flex-col md:flex-row items-center gap-28 relative"
+              className="flex flex-col md:flex-row items-center gap-16"
             >
-              <div className="md:w-1/2 space-y-4 text-left">
+              <div className="md:w-3/4 space-y-4 text-left">
                 <h3 className="text-[36px] font-semibold font-primary">
                   Evolve
                 </h3>
@@ -513,15 +524,15 @@ export default function Home() {
                 </p>
                 <Button href="#">Read more</Button>
               </div>
-              <div className="md:w-1/2 relative">
-                <div className="absolute -top-4 -right-6 w-16 h-16 bg-orange-400 rotate-12 animate-spin-slow"></div>
+              <div className="md:w-90% flex justify-center relative">
+                <div className="absolute -top-4 -right-6 w-25 h-25 bg-orange-400 rotate-12 "></div>
                 <Image
                   src="/images/home/evolve.svg"
                   alt="Evolve"
-                  width={400}
-                  height={300}
+                  width={800}
+                  height={600}
                 />
-                <div className="absolute bottom-2 right-2 w-10 h-10 bg-blue-400 rounded-full"></div>
+                <div className="absolute bottom-2 right-2 w-15 h-15 bg-blue-400 rounded-full"></div>
               </div>
             </motion.div>
           </div>
@@ -562,7 +573,11 @@ export default function Home() {
               <SwiperSlide key={index}>
                 {/* Course Card */}
                 <motion.div
-                  className="bg-white shadow-lg rounded-[20px] overflow-hidden w-full sm:w-[350px] md:w-[370px] h-auto min-h-[500px] flex flex-col mb-8"
+                  className={`shadow-lg rounded-[20px] overflow-hidden w-full sm:w-[350px] md:w-[370px] h-auto min-h-[500px] flex flex-col mb-8 border-2 ${
+                    index % 2 === 0
+                      ? "border-[#33BED4] bg-[#33BED4]-100"
+                      : "border-[#91C644] bg-[#91C644]-100"
+                  }`}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -620,7 +635,7 @@ export default function Home() {
           {/* View More Button */}
           <div className="text-center mt-8">
             <motion.button
-              className="px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold shadow-md hover:bg-purple-700 transition"
+              className="px-6 py-3 bg-[#592Ac7] text-white rounded-lg font-semibold shadow-md hover:bg-violet-400 transition"
               whileHover={{ scale: 1.05 }}
             >
               View more
