@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-export default function Bridge() {
+export default function Steam() {
   return (
     <>
       {/* Wrapper */}
@@ -11,20 +11,21 @@ export default function Bridge() {
             {/* Top */}
             <div className="flex flex-col gap-y-4">
               <h1 className="text-[#592AC7] text-[40px]  md:text-[62px] lg:text-[64px] leading-[120%] font-semibold text-center font-primary">
-                Bridge
+                STEAM
               </h1>
               <p className="font-secondary font-medium text-black text-[18px] leading-[30px] text-center">
-                We transform education into experience, bridging the gap between
-                academia and the professional world. Through real-world impact,
-                personal growth, and career-focused learning, we empower you to
-                step confidently into the future.
+                Our STEAM program reintroduces the joy of tinkering and learning
+                by empowering young minds to experiment, innovate, and develop
+                essential skills for the future. We make learning exciting
+                through hands-on exploration in Science, Technology,
+                Engineering, Arts, and Mathematics.
               </p>
             </div>
             <div className="max-w-full">
               <iframe
                 width="100%"
                 height="315"
-                src="https://www.youtube.com/embed/xf697xkmu74?si=7gyQHmM7syAgCtiM"
+                src="https://www.youtube.com/embed/p4Qo589mg8U?si=SBmFHyM6WwT1H2iQ"
                 title="YouTube video player"
                 // frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -46,28 +47,28 @@ export default function Bridge() {
                   <span className="text-[#592AC7] font-bold">
                     13 villages with about 40,000 people.
                   </span>
-                  It is situated in the Villupuram district of Tamil Nadu, a
-                  state with approximately 
+                  Situated in the Villupuram district of Tamil Nadu, the region
+                  was primarily reliant on agricultural communities for income.
+                  However, due to
                   <span className="text-[#592AC7] font-bold">
-                    74% of its population falling in the productive age group of
-                    15–35 years.
+                    climate change, income from farming has been decreasing.
                   </span>
-                  (Defined as “youth” by The Tamil Nadu State Youth Policy).
                   <br />
                   <br />
-                  These
+                  This shift in the natural environment is also altering the
+                  cultural perspective, where
                   <span className="text-[#592AC7] font-bold">
-                    &nbsp;young adults are the catalysts of social change,
+                    &nbsp;education
                   </span>
-                  driving the route to socioeconomic, political, environmental,
-                  and technological development in all spheres of life.
-                  <br />
-                  However, the shift in the natural environment of the region
-                  has impacted the income generation from agriculture which has
-                  been the prominent source of income for the community. This is
-                  altering the cultural perspective, where families increasingly
-                  depend on young adults to generate income and support their
-                  families.
+                  is now seen as a
+                  <span className="text-[#592AC7] font-bold">
+                    secure pathway
+                  </span>
+                  for employment and
+                  <span className="text-[#592AC7] font-bold">
+                    generating income
+                  </span>
+                  for families.
                 </p>
               </div>
               <div className="lg:w-[40%] lg:align-middle flex flex-col relative">
@@ -120,7 +121,7 @@ export default function Bridge() {
         <div className="max-w-[1240px] flex flex-col m-auto px-5 md:px-8 xl:px-0 gap-y-16 md:gap-y-24 lg:gap-y-32">
           <div className="flex flex-col gap-y-[64px] ">
             <h2 className="text-black text-[32px]  md:text-[40px] lg:text-5xl leading-[120%] font-semibold text-center font-primary">
-              Challenges & Needs
+              The Challenge
             </h2>
             <div className="flex flex-row gap-x-[106px] flex-wrap lg:flex-nowrap gap-y-8 md:gap-y-16 justify-center">
               <div className="lg:w-[40%] lg:align-middle flex flex-col relative">
@@ -167,30 +168,26 @@ export default function Bridge() {
               </div>
               <div className="lg:w-[60%]">
                 <p className="font-secondary font-medium text-black text-[18px] leading-[30px]">
-                  Conventional education system’s emphasis on rote learning and
-                  lack of application-based curricula has led to the youth 
+                  The conventional education system’s emphasis on
                   <span className="text-[#592AC7] font-bold">
-                    lacking creative, critical thinking and other employable
-                    skills. 
+                    rote learning
+                  </span>
+                   and lack of application based curricula in subjects like
+                  science, mathematics has been known to {" "}
+                  <span className="text-[#592AC7] font-bold">
+                    stifle creativity 
                   </span>
                   <br />
-                  <br /> The 
+                  <br /> This has further lead to lack of inspiration and {" "}
                   <span className="text-[#592AC7] font-bold">
-                    rapid technological advancement has created a skills gap
+                    lack of skills in the youth 
                   </span>
-                   posing a huge challenge for the youth to secure or create
-                  employment. With little to no access to career growth
-                  opportunities, the youth are often led astray by fringe groups
-                  causing both economic and social concerns. <br />
-                  <br />
-                  This creates a{" "}
+                  to think out of the box and turn their ideas into reality.{" "}
                   <span className="text-[#592AC7] font-bold">
-                    need for platforms that can provide a basic understanding of
-                    new-age skills, personalized guidance, 
+                    Growing underemployment
                   </span>
-                  and access to improved tools and resources that empower the
-                  youth to become lifelong learners and pursue their
-                  aspirations.
+                    with little to no access to career growth opportunities
+                  aggravates this situation for the youth.
                 </p>
               </div>
             </div>
@@ -202,39 +199,33 @@ export default function Bridge() {
         <div className="max-w-[1028px] flex flex-col m-auto px-5 md:px-8 xl:px-0 gap-y-16 md:gap-y-24 lg:gap-y-32">
           <div className="flex flex-col gap-y-[64px]">
             <h2 className="text-black text-[32px]  md:text-[40px] lg:text-5xl leading-[120%] font-semibold text-center font-primary">
-              The Bridge Program
+              The STE(A)M Lab
             </h2>
             <div className="flex flex-row gap-x-[106px] flex-wrap lg:flex-nowrap gap-y-8 md:gap-y-16 justify-center">
               <div className="lg:w-[60%]">
                 <p className="font-secondary font-medium text-black text-[18px] leading-[30px]">
-                  The 
+                  Through our STEAM program, we want to re-introduce the
                   <span className="text-[#592AC7] font-bold">
-                    Bridge Program is a 3-6 month program 
+                    joy of tinkering
                   </span>
-                  that will provide introductory training in predetermined areas
-                  such as Digital Marketing, Market Research and Analytics,
-                  Sustainability Assessment and Artificial Intelligence. The
-                  program is aimed at young adults who are in the process of
-                  completing their education and looking for employment
-                  opportunities. 
+                    and learning by doing, especially in the fields of Science,
+                  Technology, Engineering and Mathematics.
                   <br />
-                  <br /> The goal is to
+                  <br />A dedicated STEAM Lab would give a platform and space
+                  for the students to explore,  innovate, and
                   <span className="text-[#592AC7] font-bold">
-                    &nbsp;facilitate a project based learning environment 
+                     develop essential skills 
                   </span>
-                   that provides them with an opportunity to explore new-age
-                  skills, and empowering tools to thrive in a rapidly changing
-                  world while upholding the principles of holistic development
-                  and unity. <br />
-                  <br />
-                  Through
+                  needed to fuel innovation and entrepreneurship.The program
+                  will be aimed at
                   <span className="text-[#592AC7] font-bold">
-                     Yuvabe’s Work-Serve-Evolve philosophy
+                     7-14 year olds
                   </span>
-                  , the aim is to go beyond an upskilling program and
-                  incorporate the service-to-community mindset and focus on
-                  self-growth, thereby bolstering holistic personality
-                  development. 
+                   to introduce them to various disciplines including 
+                  <span className="text-[#592AC7] font-bold">
+                    robotics, computer
+                    programming, electronics, biology, physics, and more.
+                  </span>
                 </p>
               </div>
               <div className="lg:w-[40%] lg:align-middle flex flex-col relative">
@@ -243,7 +234,7 @@ export default function Bridge() {
                   alt=""
                   width={637.5938110351562}
                   height={621.3225708007812}
-                  className="w-full xl:min-w-[600px] z-10 lg:mt-[-75px]"
+                  className="w-full xl:min-w-[600px] z-10 lg:mt-[-100px]"
                 />
                 {/* Yellow Ellipse */}
                 <svg
@@ -296,8 +287,8 @@ export default function Bridge() {
                 height={104}
               />
               <p className="font-secondary font-medium text-black text-[18px] leading-[30px] w-full text-left md:text-center lg:text-left">
-                Mentor-guided learning and career guidance with a focus on
-                skills and knowledge directly applicable to the industry.
+                Drive engagement in Auroville, the bioregion and in underserved
+                 communities through an accessible centralised STEAM Lab.
               </p>
             </div>
             <div className="flex flex-row gap-x-4 md:gap-y-[65px] gap-y-8 lg:w-[49%] items-center flex-wrap lg:flex-nowrap justify-center w-full">
@@ -308,8 +299,8 @@ export default function Bridge() {
                 height={104}
               />
               <p className="font-secondary font-medium text-black text-[18px] leading-[30px] w-full text-left md:text-center lg:text-left">
-                Hands-on projects and opportunities to work on live projects for
-                practical learning
+                Out of school  and school break programs for Aurovillians and
+                 bioregion kids.
               </p>
             </div>
             <div className="flex flex-row gap-x-4 md:gap-y-[65px] gap-y-8 lg:w-[49%] items-center flex-wrap lg:flex-nowrap justify-center w-full">
@@ -320,8 +311,8 @@ export default function Bridge() {
                 height={104}
               />
               <p className="font-secondary font-medium text-black text-[18px] leading-[30px] w-full text-left md:text-center lg:text-left">
-                Development of soft skills through workshops on communication,
-                emotional intelligence, teamwork, and interpersonal skills
+                A more personalised learning with low mentor-student ratio with
+                about 4 Yuvabe youth assigned to each class.
               </p>
             </div>
             <div className="flex flex-row gap-x-4 md:gap-y-[65px] gap-y-8 lg:w-[49%] items-center flex-wrap lg:flex-nowrap justify-center w-full">
@@ -332,8 +323,8 @@ export default function Bridge() {
                 height={104}
               />
               <p className="font-secondary font-medium text-black text-[18px] leading-[30px] w-full text-left md:text-center lg:text-left">
-                Emphasise the importance of giving back to the community through
-                service work. 
+                Partnership with various STEAM  and Experiential learning
+                organisations like Agastya Foundation, ThinkTac etc.
               </p>
             </div>
 
@@ -554,52 +545,17 @@ export default function Bridge() {
                     </svg>
                   </div>
                 </div>
-                <div className="flex flex-col border-[1.5px] rounded-[15px] border-[#FFCA2D] bg-[#FFFAEA] gap-y-[13px] w-full md:w-1/4 md:grow-1 lg:w-1/5 justify-center items-center pt-8 pb-[22px] px-[28px] box-shadow-card">
+                <div className="flex flex-col border-[1.5px] rounded-[15px] border-[#F8A91E] bg-[#FEF6E8] gap-y-[13px] w-full md:w-1/4 md:grow-1 lg:w-1/5 justify-center items-center pt-8 pb-[22px] px-[28px] box-shadow-card">
                   <img
-                    src="images\bridge\megaphone.png"
-                    alt=""
-                    width={96}
-                    height={96}
-                  />
-                  <h3 className="font-primary text-[16px] lg:text-2xl leading-[30px] font-semibold text-black text-center">
-                    Digital marketing
-                  </h3>
-                  <div className="bg-[#FFCA2D] rounded-full p-[6px] w-[31.5px] self-end">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5.25 5.36523L14.7959 5.36523L14.7959 14.9112"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M14.7959 5.36617L5.25 14.9121"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="flex flex-col border-[1.5px] rounded-[15px] border-[#9688C0] bg-[#EBF8FB] gap-y-[13px] w-full md:w-1/4 md:grow-1 lg:w-1/5 justify-center items-center pt-8 pb-[22px] px-[28px] box-shadow-card">
-                  <img
-                    src="images\bridge\ai.png"
+                    src="images\bridge\pen.png"
                     alt=""
                     width={90}
                     height={90}
                   />
                   <h3 className="font-primary text-[16px] lg:text-2xl leading-[30px] font-semibold text-black text-center">
-                    AI Full Stack
+                    Auroville Program
                   </h3>
-                  <div className="bg-[#33BED4] rounded-full p-[6px] w-[31.5px] self-end">
+                  <div className="bg-[#F8A91E] rounded-full p-[6px] w-[31.5px] self-end">
                     <svg
                       width="20"
                       height="20"
@@ -626,50 +582,15 @@ export default function Bridge() {
                 </div>
                 <div className="flex flex-col border-[1.5px] rounded-[15px] border-[#91C644] bg-[#F4F9EC] gap-y-[13px] w-full md:w-1/4 md:grow-1 lg:w-1/5 justify-center items-center pt-8 pb-[22px] px-[28px] box-shadow-card">
                   <img
-                    src="images\bridge\leaf.png"
+                    src="images\bridge\laptop.png"
                     alt=""
                     width={90}
                     height={90}
                   />
                   <h3 className="font-primary text-[16px] lg:text-2xl leading-[30px] font-semibold text-black text-center">
-                    Corporate Sustainability
+                    Visitor Program
                   </h3>
                   <div className="bg-[#91C644] rounded-full p-[6px] w-[31.5px] self-end">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5.25 5.36523L14.7959 5.36523L14.7959 14.9112"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M14.7959 5.36617L5.25 14.9121"
-                        stroke="white"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div className="flex flex-col border-[1.5px] rounded-[15px] border-[#F8A91E] bg-[#FEF6E8] gap-y-[13px] w-full md:w-1/4 md:grow-1 lg:w-1/5 justify-center items-center pt-8 pb-[22px] px-[28px] box-shadow-card">
-                  <img
-                    src="images\bridge\pen.png"
-                    alt=""
-                    width={90}
-                    height={90}
-                  />
-                  <h3 className="font-primary text-[16px] lg:text-2xl leading-[30px] font-semibold text-black text-center">
-                    UI/UX Design
-                  </h3>
-                  <div className="bg-[#F8A91E] rounded-full p-[6px] w-[31.5px] self-end">
                     <svg
                       width="20"
                       height="20"
@@ -714,25 +635,18 @@ export default function Bridge() {
               {/* Text */}
               <div className="flex flex-col gap-y-6">
                 <p className="font-secondary font-bold text-[18px] leading-[30px] text-white">
-                  The whole month of December 2024 all the donations will be
-                  doubled, thanks to  AVI-USA's
-                  <span className="text-[#FFCA2D]"> Match the Donation </span>
-                  Campaign!
+                  The success of our STEAM Lab is made possible by the
+                  generosity of donors like you. Your support can help us reach
+                  more children, create lasting change, and bring dreams to
+                  life.
                   <br />
-                  <br />
-                  <span className="text-[#FFCA2D]">
-                    Sponsor 1 candidate with a donation of US $300 per program
-                    and impact 2 lives
-                  </span>
-                  <br />
-                  <br />
-                  You may also set up a recurring monthly gift that will ensure
-                  a steady and reliable source of funding for the entire
-                  duration of the internship.
+                  <br />​ Join hands with Yuvabe to empower our future
+                  innovators and leaders to uncover the potential of every
+                  child. Your donation can light up a child's future, one life
+                  at a time.
                 </p>
                 <p className="font-secondary font-semibold text-2xl md:text-4xl leading-[40px] text-[#FFCA2D]">
-                  Let’s empower one youth at a time and gift them a better
-                  future!
+                  Donate Today and Be a Changemaker!
                 </p>
               </div>
               {/* Donate Button */}
@@ -757,7 +671,7 @@ export default function Bridge() {
                     </li>
                     <li>
                       Mention Project name as
-                      <strong>'Yuvabe Bridge Program'</strong>
+                      <strong>'Yuvabe STEAM Lab'</strong>
                     </li>
                   </ul>
                 </p>
