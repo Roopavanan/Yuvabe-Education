@@ -1,4 +1,3 @@
-import bridge_calendar_component from "lib/bridge-calendar-component"; // Import the ItemList component
 export default function Bridge_Program_Calendar() {
   return (
     <>

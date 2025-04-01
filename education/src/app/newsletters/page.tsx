@@ -15,7 +15,7 @@ export default function Newsletters() {
                 {/* Left */}
                 <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
                   <img
-                    src="test\test.png"
+                    src="images\blogs\test.png"
                     alt=""
                     width={347}
                     height={326}
@@ -59,7 +59,7 @@ export default function Newsletters() {
                 {/* Left */}
                 <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
                   <img
-                    src="test\test.png"
+                    src="images\blogs\test.png"
                     alt=""
                     width={347}
                     height={326}
@@ -103,7 +103,7 @@ export default function Newsletters() {
                 {/* Left */}
                 <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
                   <img
-                    src="test\test.png"
+                    src="images\blogs\test.png"
                     alt=""
                     width={347}
                     height={326}
@@ -147,7 +147,7 @@ export default function Newsletters() {
                 {/* Left */}
                 <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
                   <img
-                    src="test\test.png"
+                    src="images\blogs\test.png"
                     alt=""
                     width={347}
                     height={326}
@@ -191,7 +191,7 @@ export default function Newsletters() {
                 {/* Left */}
                 <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
                   <img
-                    src="test\test.png"
+                    src="images\blogs\test.png"
                     alt=""
                     width={347}
                     height={326}

@@ -35,6 +35,10 @@
   box-shadow: 6.92682px 6.92682px 37.2317px rgba(0, 0, 0, 0.1);
 }
 
+.box-shadow-card:hover {
+  box-shadow: 8.58791px 8.58791px 46.16px rgba(0, 0, 0, 0.1);
+}
+
 /* .blog-list-block>div:nth-child(5) {
   background-color: #592AC7;
 }

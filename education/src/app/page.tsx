@@ -1,5 +1,5 @@
 "use client";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -141,7 +141,7 @@ export default function Home() {
       {/* Client Logo Slider */}
       <section className="bg-white py-10  shadow-lg  backdrop-blur-lg">
         <div className="w-full mx-auto px-4">
-          <Slider {...settings}>
+          {/* <Slider {...settings}>
             {logos.map((logo, index) => (
               <div key={index} className="px-4">
                 <Image
@@ -153,7 +153,7 @@ export default function Home() {
                 />
               </div>
             ))}
-          </Slider>
+          </Slider> */}
         </div>
       </section>
 
@@ -534,103 +534,102 @@ export default function Home() {
       {/* course cards slider */}
 
       <section className="py-10 bg-[#FDF7E6]">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-    {/* Section Title */}
-    <motion.h2
-      className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      Enroll On Our Latest Bridge Courses
-    </motion.h2>
-
-    {/* Swiper Carousel */}
-    <Swiper
-      modules={[Autoplay]}
-      spaceBetween={20}
-      slidesPerView={1}
-      breakpoints={{
-        640: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      }}
-      autoplay={{ delay: 4000 }}
-      className="w-full"
-    >
-      {courses.map((course, index) => (
-        <SwiperSlide key={index}>
-          {/* Course Card */}
-          <motion.div
-            className="bg-white shadow-lg rounded-[20px] overflow-hidden w-full sm:w-[350px] md:w-[370px] h-auto min-h-[500px] flex flex-col mb-8"
-            initial={{ opacity: 0, y: 30 }}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          {/* Section Title */}
+          <motion.h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            transition={{ duration: 0.6 }}
           >
-            {/* Image Section */}
-            <div className="relative w-full h-[180px] sm:h-[200px]">
-              <Image
-                src={course.image}
-                alt={course.title}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-t-lg"
-              />
-              {/* Tag */}
-              <span
-                className={`absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded ${
-                  course.status === "Active"
-                    ? "bg-purple-600 text-white"
-                    : "bg-blue-600 text-white"
-                }`}
-              >
-                {course.status}
-              </span>
-            </div>
+            Enroll On Our Latest Bridge Courses
+          </motion.h2>
 
-            {/* Text Section */}
-            <div className="p-5 flex flex-col flex-grow">
-              {/* Title */}
-              <h3 className="text-lg font-semibold">{course.title}</h3>
-              {/* Description */}
-              <p className="text-gray-700 text-sm mt-2 flex-grow">
-                {course.description}
-              </p>
-              {/* Navigation Icon */}
-              <div className="flex justify-end mt-4">
-                <Link
-                  href={`/courses/${course.title
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")}`}
-                  className="mt-4"
+          {/* Swiper Carousel */}
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            autoplay={{ delay: 4000 }}
+            className="w-full"
+          >
+            {courses.map((course, index) => (
+              <SwiperSlide key={index}>
+                {/* Course Card */}
+                <motion.div
+                  className="bg-white shadow-lg rounded-[20px] overflow-hidden w-full sm:w-[350px] md:w-[370px] h-auto min-h-[500px] flex flex-col mb-8"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
                 >
-                  <div
-                    className={`w-10 h-10 flex items-center justify-center rounded-full text-white ${course.arrowColor}`}
-                  >
-                    <FontAwesomeIcon icon={faArrowRight} />
+                  {/* Image Section */}
+                  <div className="relative w-full h-[180px] sm:h-[200px]">
+                    <Image
+                      src={course.image}
+                      alt={course.title}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-t-lg"
+                    />
+                    {/* Tag */}
+                    <span
+                      className={`absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded ${
+                        course.status === "Active"
+                          ? "bg-purple-600 text-white"
+                          : "bg-blue-600 text-white"
+                      }`}
+                    >
+                      {course.status}
+                    </span>
                   </div>
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
 
-    {/* View More Button */}
-    <div className="text-center mt-8">
-      <motion.button
-        className="px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold shadow-md hover:bg-purple-700 transition"
-        whileHover={{ scale: 1.05 }}
-      >
-        View more
-      </motion.button>
-    </div>
-  </div>
-</section>
+                  {/* Text Section */}
+                  <div className="p-5 flex flex-col flex-grow">
+                    {/* Title */}
+                    <h3 className="text-lg font-semibold">{course.title}</h3>
+                    {/* Description */}
+                    <p className="text-gray-700 text-sm mt-2 flex-grow">
+                      {course.description}
+                    </p>
+                    {/* Navigation Icon */}
+                    <div className="flex justify-end mt-4">
+                      <Link
+                        href={`/courses/${course.title
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")}`}
+                        className="mt-4"
+                      >
+                        <div
+                          className={`w-10 h-10 flex items-center justify-center rounded-full text-white ${course.arrowColor}`}
+                        >
+                          <FontAwesomeIcon icon={faArrowRight} />
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
+          {/* View More Button */}
+          <div className="text-center mt-8">
+            <motion.button
+              className="px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold shadow-md hover:bg-purple-700 transition"
+              whileHover={{ scale: 1.05 }}
+            >
+              View more
+            </motion.button>
+          </div>
+        </div>
+      </section>
 
-            {/* Call to Action section */}
+      {/* Call to Action section */}
       <section className="flex justify-center items-center py-16 px-6">
         <motion.div
           className="bg-[#592AC7] text-white rounded-[30px] shadow-lg w-[960px] h-[340px] max-w-full p-8 text-center 
