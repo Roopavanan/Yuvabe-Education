@@ -547,7 +547,7 @@ export default function Steam() {
                 </div>
                 <div className="flex flex-col border-[1.5px] rounded-[15px] border-[#F8A91E] bg-[#FEF6E8] gap-y-[13px] w-full md:w-1/4 md:grow-1 lg:w-1/5 justify-center items-center pt-8 pb-[22px] px-[28px] box-shadow-card">
                   <img
-                    src="images\bridge\pen.png"
+                    src="images\bridge\matrimandir-oultine.png"
                     alt=""
                     width={90}
                     height={90}
