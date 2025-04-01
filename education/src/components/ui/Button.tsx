@@ -6,8 +6,8 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   type?: "button" | "submit" | "reset";
-  href?: string; 
-  target?: "_blank" | "_self"; 
+  href?: string; // Add this prop for link support
+  target?: "_blank" | "_self"; // Optional for external links
 }
 
 const Button: React.FC<ButtonProps> = ({

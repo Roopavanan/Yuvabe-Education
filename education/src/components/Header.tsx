@@ -1,45 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSearch } from "react-icons/fi";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "./ui/button";
+import Button from "./ui/Button";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [isTablet, setIsTablet] = useState(false);
-
-  
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsTablet(window.innerWidth <= 1024); // Toggle menu for tablet & mobile
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleDropdownOpen = (menu: string | null) => {
-    setOpenDropdown(menu === openDropdown ? null : menu);
-  };
-
-  const closeDropdown = () => {
-    setOpenDropdown(null);
-  };
-
-  const closeMobileMenu = () => {
-    setMenuOpen(false);
-    closeDropdown();
+  const toggleDropdown = (menu: string | null) => {
+    setOpenDropdown(openDropdown === menu ? null : menu);
   };
 
   const navLinks = [
@@ -47,7 +26,7 @@ const Header = () => {
       label: "STEAM",
       links: [
         { name: "About Steam", path: "/steam/about" },
-        { name: "Program Calendar", path: "/steam/program-calendar" },
+        { name: "Program Calendar", path: "/steam/calendar" },
         { name: "Auroville Program", path: "/steam/auroville" },
         { name: "Visitor Program", path: "/steam/visitor" },
       ],
@@ -86,31 +65,25 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-white shadow-lg shadow-gray-300 w-full px-4 sm:px-6 md:px-14 lg:px-18 top-0 left-0 z-50 backdrop-blur-lg fixed">
+    <header className="bg-white shadow-lg shadow-gray-300 w-full px-4 sm:px-6 md:px-14 lg:px-18 top-0 left-0  z-50 backdrop-blur-lg fixed">
       <nav className="flex items-center justify-between py-3">
         {/* Logo */}
         <div className="flex items-center">
-          <Image src="/images/logo.png" alt="Logo" width={50} height={50} priority style={{ width: "auto", height: "auto" }} />
+          <Image src="/images/logo.png" alt="Logo" width={50} height={50} />
         </div>
 
-        {/* Mobile & Tablet Menu Button */}
-        <button className="lg:hidden" onClick={toggleMenu}>
+        {/* Mobile Menu Button */}
+        <button className="md:hidden" onClick={toggleMenu}>
           {menuOpen ? <HiX size={28} /> : <HiOutlineMenu size={28} />}
         </button>
 
         {/* Desktop Menu */}
-        <ul className="hidden lg:flex lg:space-x-8 xl:space-x-12 text-black font-medium font-primary">
-          <li className="hover:text-[#592AC7] transition duration-200"><Link href="/" onClick={closeDropdown}>Home</Link></li>
-          <li className="hover:text-[#592AC7] transition duration-200"><Link href="/about" onClick={closeDropdown}>About Us</Link></li>
-
+        <ul className="hidden md:flex md:space-x-8 lg:space-x-12 text-black font-medium font-primary">
+          <li><Link href="/">Home</Link></li>
+          <li><Link href="/about">About Us</Link></li>
           {navLinks.map((menu, index) => (
-            <li
-              key={index}
-              className="relative group"
-              onMouseEnter={() => handleDropdownOpen(menu.label)}
-              onMouseLeave={closeDropdown}
-            >
-              <button className="flex items-center">
+            <li key={index} className="relative">
+              <button onClick={() => toggleDropdown(menu.label)} className="flex items-center">
                 {menu.label} <IoMdArrowDropdown className="ml-1" />
               </button>
               <AnimatePresence>
@@ -123,9 +96,7 @@ const Header = () => {
                   >
                     {menu.links.map((link, i) => (
                       <li key={i} className="py-2 px-4 hover:bg-gray-100">
-                        <Link href={link.path} onClick={closeDropdown}>
-                          {link.name}
-                        </Link>
+                        <Link href={link.path}>{link.name}</Link>
                       </li>
                     ))}
                   </motion.ul>
@@ -135,31 +106,30 @@ const Header = () => {
           ))}
         </ul>
 
-        {/* Search & Donate Button (Hidden on Tablets & Mobile) */}
-        <div className="hidden lg:flex items-center space-x-12">
+        {/* Search & Donate Button */}
+        <div className="hidden md:flex items-center space-x-12">
           <div className="hidden sm:flex bg-gray-100 p-2 rounded-[15px] items-center">
             <FiSearch className="text-gray-500" />
             <input type="text" placeholder="Search" className="bg-transparent outline-none pl-2 w-40 sm:w-48 md:w-58" />
           </div>
-          <Button href="/donate">Donate</Button>
+            <Button href="/donate">Donate</Button>
         </div>
       </nav>
 
-      {/* Mobile & Tablet Menu */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden flex flex-col space-y-4 py-4 bg-white"
+            className="md:hidden flex flex-col space-y-4 py-4 bg-white"
           >
-            <Link href="/" onClick={closeMobileMenu}>Home</Link>
-            <Link href="/about" onClick={closeMobileMenu}>About Us</Link>
-
+            <Link href="/">Home</Link>
+            <Link href="/about">About Us</Link>
             {navLinks.map((menu, index) => (
               <div key={index}>
-                <button onClick={() => handleDropdownOpen(menu.label)} className="flex items-center w-full text-left hover:text-[#592AC7] transition duration-300 ">
+                <button onClick={() => toggleDropdown(menu.label)} className="flex items-center w-full text-left">
                   {menu.label} <IoMdArrowDropdown className="ml-1" />
                 </button>
                 <AnimatePresence>
@@ -172,9 +142,7 @@ const Header = () => {
                     >
                       {menu.links.map((link, i) => (
                         <li key={i} className="py-1">
-                          <Link href={link.path} onClick={closeMobileMenu}>
-                            {link.name}
-                          </Link>
+                          <Link href={link.path}>{link.name}</Link>
                         </li>
                       ))}
                     </motion.ul>
@@ -182,7 +150,7 @@ const Header = () => {
                 </AnimatePresence>
               </div>
             ))}
-            <Button onClick={() => alert("Button Clicked!")}>Donate</Button>
+             <Button onClick={() => alert("Button Clicked!")}>Donate</Button>
           </motion.div>
         )}
       </AnimatePresence>
