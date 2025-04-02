@@ -45,51 +45,51 @@ export default function SupportUs() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-white pt-32 pb-16 px-6 md:px-12 lg:px-16">
-        <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-8 md:gap-16">
-          {/* Left Content */}
-          <motion.div
-            className="w-full md:w-1/2 text-center md:text-left"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <motion.h1
-              className="text-[64px] font-bold text-[#592AC7] font-primary"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              Support Us
-            </motion.h1>
+      <section className="relative flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-12  bg-white min-h-[600px] md:min-h-[800px] ">
+  {/* Left Side - Centered Text */}
+  <motion.div
+    className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-left text-center md:text-left mt-12 md:mt-0"
+    initial={{ opacity: 0, x: -50 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    <h1 className="text-4xl md:text-[64px] font-semibold font-primary text-[#592Ac7]">
+    Support Us     </h1>
+    <p className="mt-4 text-gray-700 max-w-xl font-secondary  text-[18px]">
+    You have the power to fuel a program that’s more than just upskilling! Be part of something bigger, where growth isn’t just personal; it’s collective. Let’s build the future together!
+    </p>
+    
+  </motion.div>
 
-            <motion.p
-              className="mt-4 text-gray-600 text-[18px] font-secondary leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-            >
-              You have the power to fuel a program that’s more than just
-              upskilling! Be part of something bigger, where growth isn’t just
-              personal; it’s collective. Let’s build the future together!
-            </motion.p>
-          </motion.div>
+  {/* Right Side - Image in Bottom Right Corner */}
+  <motion.div
+    className="absolute bottom-0 right-0 md:w-1/2 flex justify-end"
+    initial={{ opacity: 0, x: 50 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    <div className="relative">
+      {/* Floating Shapes */}
+      <motion.div
+        className="absolute top-50 right-20 w-15 h-15 bg-[#33BED4]"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      ></motion.div>
 
-          {/* Right Side Image/Icon */}
-          <motion.div
-            className="w-full md:w-1/2 flex justify-center md:justify-end"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-          >
-            <div className="w-32 h-32 md:w-40 md:h-40 bg-yellow-400 rounded-tl-full"></div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Image */}
+      <Image
+        src="/images/support.jpg"
+        alt="Group working on laptop"
+        width={550}
+        height={400}
+        className="w-[400px] md:w-[900px] max-w-[1250px] h-auto"
+      />
+    </div>
+  </motion.div>
+</section>
+
+
+
 
       {/* Support Section */}
       <section className="py-16 bg-[#FBF6EF] text-center">

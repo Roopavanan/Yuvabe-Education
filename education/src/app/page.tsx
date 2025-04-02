@@ -22,8 +22,7 @@ const logos = [
   "/images/clientlogo/playto.svg",
   "/images/clientlogo/agastya.svg",
   "/images/clientlogo/playto.svg",
-  "/images/clientlogo/agastya.svg",
-  "/images/clientlogo/microsoft.png",
+  
 ];
 
 const settings = {
@@ -157,23 +156,43 @@ export default function Home() {
       {/* Hero section End */}
 
       {/* Client Logo Slider */}
-      <section className="bg-white py-10 shadow-lg backdrop-blur-lg">
-        <div className="w-full mx-auto px-4">
-          <Slider {...settings}>
-            {logos.map((logo, index) => (
-              <div key={index} className="px-4">
-                <Image
-                  src={logo}
-                  alt={`Client logo ${index + 1}`}
-                  width={150}
-                  height={75}
-                  className="mx-auto object-contain transition duration-300 grayscale hover:grayscale-0"
-                />
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </section>
+    
+
+<section className="bg-white py-10 shadow-lg backdrop-blur-lg">
+  <div className="w-full mx-auto px-4">
+    <motion.div 
+      className="flex flex-wrap justify-center items-center gap-6"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: { staggerChildren: 0.2 },
+        },
+      }}
+    >
+      {logos.map((logo, index) => (
+        <motion.div 
+          key={index} 
+          className="px-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+        >
+          <Image
+            src={logo}
+            alt={`Client logo ${index + 1}`}
+            width={150}
+            height={75}
+            className="mx-auto object-contain transition duration-300"
+          />
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
+
       {/* client logo slider End */}
 
       {/* Our story */}
@@ -444,9 +463,9 @@ export default function Home() {
           <div className="space-y-28 mt-16">
             {/* Work Section */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1 }}
+               transition={{ duration: 0.6 }}
               className="flex flex-col md:flex-row items-center gap-16"
             >
               <div className="md:w-3/4 space-y-4 text-left">
@@ -470,9 +489,9 @@ export default function Home() {
 
             {/* Serve Section */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
               className="flex flex-col md:flex-row-reverse items-center gap-18"
             >
               <div className="md:w-3/4 space-y-4 text-left">
@@ -508,9 +527,9 @@ export default function Home() {
 
             {/* Evolve Section */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1 }}
+               transition={{ duration: 0.6, delay: 2 }}
               className="flex flex-col md:flex-row items-center gap-16"
             >
               <div className="md:w-3/4 space-y-4 text-left">

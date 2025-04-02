@@ -7,12 +7,17 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "./ui/button";
+import Button from "@/components/ui/button";
+import { useRouter } from "next/navigation"; 
+import { pageData } from "../data/pageData"; 
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isTablet, setIsTablet] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredResults, setFilteredResults] = useState<{ title: string; path: string }[]>([]);
+  const router = useRouter();
 
   
 
@@ -28,6 +33,26 @@ const Header = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  // Handle search input changes
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setFilteredResults([]);
+    } else {
+      const results = pageData.filter((page) =>
+        page.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        page.keywords.some(keyword => keyword.toLowerCase().includes(searchQuery.toLowerCase()))
+      );
+      setFilteredResults(results);
+    }
+  }, [searchQuery]);
+
+    // Handle search result click
+    const handleResultClick = (path: string) => {
+      setSearchQuery(""); // Clear search input
+      setFilteredResults([]); // Hide search results
+      router.push(path); // Navigate to selected page
+    };
 
   const handleDropdownOpen = (menu: string | null) => {
     setOpenDropdown(menu === openDropdown ? null : menu);
@@ -46,7 +71,7 @@ const Header = () => {
     {
       label: "STEAM",
       links: [
-        { name: "About Steam", path: "/steam/about" },
+        { name: "About Steam", path: "/steam/about-steam" },
         { name: "Program Calendar", path: "/steam/program-calendar" },
         { name: "Auroville Program", path: "/steam/auroville" },
         { name: "Visitor Program", path: "/steam/visitor" },
@@ -56,7 +81,7 @@ const Header = () => {
       label: "Bridge",
       links: [
         { name: "About Bridge", path: "/bridge/about" },
-        { name: "Program Calendar", path: "/bridge/calendar" },
+        { name: "Program Calendar", path: "/bridge/bridge-program" },
         { name: "Digital Marketing", path: "/bridge/digital-marketing" },
         { name: "UI/UX", path: "/bridge/ui-ux" },
         { name: "AI", path: "/bridge/ai" },
@@ -69,7 +94,7 @@ const Header = () => {
       label: "Our Stories",
       links: [
         { name: "Blogs", path: "/stories/blogs" },
-        { name: "Newsletter", path: "/stories/newsletter" },
+        { name: "Newsletter", path: "/stories/newsletters" },
         { name: "Impact Report", path: "/stories/impact-report" },
       ],
     },
@@ -101,7 +126,7 @@ const Header = () => {
         {/* Desktop Menu */}
         <ul className="hidden lg:flex lg:space-x-8 xl:space-x-12 text-black font-medium font-primary">
           <li className="hover:text-[#592AC7] transition duration-200"><Link href="/" onClick={closeDropdown}>Home</Link></li>
-          <li className="hover:text-[#592AC7] transition duration-200"><Link href="/about" onClick={closeDropdown}>About Us</Link></li>
+          <li className="hover:text-[#592AC7] transition duration-200"><Link href="/about-us" onClick={closeDropdown}>About Us</Link></li>
 
           {navLinks.map((menu, index) => (
             <li
@@ -136,13 +161,27 @@ const Header = () => {
         </ul>
 
         {/* Search & Donate Button (Hidden on Tablets & Mobile) */}
-        <div className="hidden lg:flex items-center space-x-12">
-          <div className="hidden sm:flex bg-gray-100 p-2 rounded-[15px] items-center">
-            <FiSearch className="text-gray-500" />
-            <input type="text" placeholder="Search" className="bg-transparent outline-none pl-2 w-40 sm:w-48 md:w-58" />
-          </div>
-          <Button href="/donate">Donate</Button>
+        <div className="relative hidden lg:flex bg-gray-100 p-2 rounded-[15px] items-center">
+          <FiSearch className="text-gray-500" />
+          <input
+            type="text"
+            placeholder="Search"
+            className="bg-transparent outline-none pl-2 w-40 sm:w-48 md:w-58"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          {/* Display Search Results */}
+          {filteredResults.length > 0 && (
+            <ul className="absolute top-12 left-0 w-full bg-white shadow-md rounded-md max-h-60 overflow-auto">
+              {filteredResults.map((result, index) => (
+                <li key={index} className="p-2 hover:bg-gray-200 cursor-pointer" onClick={() => handleResultClick(result.path)}>
+                  {result.title}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
+        <Button href="/donate">Donate</Button>
       </nav>
 
       {/* Mobile & Tablet Menu */}

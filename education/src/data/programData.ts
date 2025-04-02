@@ -108,7 +108,7 @@ export const programsData: Program[] = [
   },
   {
     id: '5',
-    name: "Visitor's Program",
+    name: "Visitor Program",
     description: 'providing STEAM education to Auroville',
     type: 'Full year Program',
     location: 'bio- region schools',

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function TalkToUsPage() {
   const [formData, setFormData] = useState({
@@ -43,53 +44,58 @@ const handleSubmit = async (e: React.FormEvent) => {
   }
 };
 
-
-
   
   return (
     <>
       {/* Hero Section */}
       <section className="bg-white pt-32 pb-16 px-6 md:px-12 lg:px-16">
-        <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-8 md:gap-16">
-          
-          {/* Left Content */}
-          <motion.div 
-            className="w-full md:w-1/2 text-center md:text-left"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+      <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-8 md:gap-16">
+        
+        {/* Left Content */}
+        <motion.div 
+          className="w-full md:w-1/2 text-center md:text-left"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <motion.h1 
+            className="text-[64px] font-bold text-[#592AC7] font-primary"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <motion.h1 
-              className="text-[64px] font-bold text-[#592AC7] font-primary"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              Talk to us
-            </motion.h1>
-            <motion.p 
-              className="mt-4 text-gray-600 text-[18px] font-secondary leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-            >
-              Let’s team up and make things happen! Whether you're looking to scale, innovate, or create impact, we’re here to help you turn goals into results.
-              Reach out, and let’s explore how we can grow together!
-            </motion.p>
-          </motion.div>
-
-          {/* Right Side Image/Icon */}
-          <motion.div 
-            className="w-full md:w-1/2 flex justify-center md:justify-end"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+            Talk to us
+          </motion.h1>
+          <motion.p 
+            className="mt-4 text-gray-600 text-[18px] font-secondary leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
           >
-            <div className="w-32 h-32 md:w-40 md:h-40 bg-yellow-400 rounded-tl-full"></div>
-          </motion.div>
+            Let’s team up and make things happen! Whether you're looking to scale, innovate, or create impact, we’re here to help you turn goals into results.
+            Reach out, and let’s explore how we can grow together!
+          </motion.p>
+        </motion.div>
 
-        </div>
-      </section>
+        {/* Right Side Image and Shapes */}
+        <motion.div 
+          className="w-full md:w-1/2 relative flex justify-center md:justify-center"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+        >
+          {/* Image Container */}
+          <div className="relative z-10 rounded-lg overflow-hidden w-[700px] h-[600px]">
+            <Image 
+              src="/images/home/keerthana.gif" 
+              alt="Team Working" 
+              layout="fill" 
+              objectFit="contain"
+            />
+          </div>
+        </motion.div>
+      </div>
+    </section>
 
       {/* Contact Section */}
       <section className="bg-[#592AC7] py-16 px-4">
