@@ -1,5 +1,4 @@
 "use client";
-import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,14 +14,12 @@ import "swiper/css/pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import MottoSection from "@/components/MottoSection";
 
 const logos = [
-  "/images/clientlogo/deepanam.svg",
-  "/images/clientlogo/playto.svg",
-  "/images/clientlogo/agastya.svg",
-  "/images/clientlogo/playto.svg",
-  
+  "/images/clientlogo/deep.webp",
+  "/images/clientlogo/play.webp",
+  "/images/clientlogo/agastya.webp",
+  "/images/clientlogo/ness.webp"
 ];
 
 const settings = {
@@ -36,17 +33,17 @@ const settings = {
   responsive: [
     {
       breakpoint: 1024,
-      settings: { slidesToShow: 3 },
+      settings: { slidesToShow: 3 }
     },
     {
       breakpoint: 768,
-      settings: { slidesToShow: 2 },
+      settings: { slidesToShow: 2 }
     },
     {
       breakpoint: 480,
-      settings: { slidesToShow: 2 },
-    },
-  ],
+      settings: { slidesToShow: 2 }
+    }
+  ]
 };
 
 const courses = [
@@ -56,8 +53,8 @@ const courses = [
     image: "/images/home/ai.svg",
     description:
       "Our AI First Full Stack Program is designed to provide hands-on experience. You won’t just learn the theory—you’ll apply it to real-world problems, gaining the kind of practical skills that make you stand out to employers.",
-    tagColor: "bg-purple-600",
-    arrowColor: "bg-blue-500",
+    tagColor: "bg-[#592ac7]",
+    arrowColor: "bg-[#33BED4]"
   },
   {
     title: "Sustainability",
@@ -65,8 +62,8 @@ const courses = [
     image: "/images/home/sus.svg",
     description:
       "Unlock a comprehensive understanding of sustainability with our 3- month, in-person ‘Corporate Sustainability’ course at Auroville, Tamil Nadu.",
-    tagColor: "bg-blue-600",
-    arrowColor: "bg-green-500",
+    tagColor: "bg-[#33BED4]",
+    arrowColor: "bg-[#91C644]"
   },
   {
     title: "Digital Marketing",
@@ -75,7 +72,7 @@ const courses = [
     description:
       "Yuvabe Education’s Digital Marketing Bridge Program is designed to provide an in-depth understanding of the digital marketing landscape. This 12-week, in-person classroom experience will help you build essential skills through practical training, real-world case studies, and industry mentorship.",
     tagColor: "bg-purple-600",
-    arrowColor: "bg-yellow-500",
+    arrowColor: "bg-yellow-500"
   },
   {
     title: "Digital Marketing",
@@ -84,15 +81,14 @@ const courses = [
     description:
       "Yuvabe Education’s Digital Marketing Bridge Program is designed to provide an in-depth understanding of the digital marketing landscape. This 12-week, in-person classroom experience will help you build essential skills through practical training, real-world case studies, and industry mentorship.",
     tagColor: "bg-purple-600",
-    arrowColor: "bg-blue-500",
-  },
+    arrowColor: "bg-blue-500"
+  }
 ];
 
 export default function Home() {
   return (
     <main>
       {/* Hero Section */}
-
       <section className="relative flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-12 bg-[#FDF8EE] min-h-[800px]">
         {/* Right Side - Text (Appears First on Mobile, Second on Desktop) */}
         <motion.div
@@ -111,7 +107,7 @@ export default function Home() {
           </p>
           <motion.a
             href="#"
-            className="mt-6 inline-block px-6 py-3 text-white bg-[#592AC7] rounded-lg shadow-md hover:bg-purple-700 transition"
+            className="mt-6 inline-block px-6 py-3 text-white bg-[#592AC7] rounded-lg shadow-md hover:bg-white hover:text-[#592AC7] transition"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -143,7 +139,7 @@ export default function Home() {
             ></motion.div>
 
             <Image
-              src="/images/hero1.svg"
+              src="/images/home/heroimg.webp"
               alt="Group working on laptop"
               width={550}
               height={400}
@@ -156,73 +152,77 @@ export default function Home() {
       {/* Hero section End */}
 
       {/* Client Logo Slider */}
-    
 
-<section className="bg-white py-10 shadow-lg backdrop-blur-lg">
-  <div className="w-full mx-auto px-4">
-    <motion.div 
-      className="flex flex-wrap justify-center items-center gap-6"
-      initial="hidden"
-      animate="visible"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: { staggerChildren: 0.2 },
-        },
-      }}
-    >
-      {logos.map((logo, index) => (
-        <motion.div 
-          key={index} 
-          className="px-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-        >
-          <Image
-            src={logo}
-            alt={`Client logo ${index + 1}`}
-            width={150}
-            height={75}
-            className="mx-auto object-contain transition duration-300"
-          />
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</section>
+      <section className="bg-white py-10 shadow-lg backdrop-blur-lg flex justify-center items-center overflow-hidden">
+        <div className="w-full max-w-screen-xl px-6 sm:px-8 md:px-10">
+          <motion.div
+            className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-4 sm:gap-12"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.2 }
+              }
+            }}
+          >
+            {logos.map((logo, index) => (
+              <motion.div
+                key={index}
+                className="flex justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut",
+                  delay: index * 0.1
+                }}
+              >
+                <Image
+                  src={logo}
+                  alt={`Client logo ${index + 1}`}
+                  width={150}
+                  height={75}
+                  className="w-[100px] sm:w-[140px] md:w-[160px] lg:w-[180px] object-contain transition duration-300"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
       {/* client logo slider End */}
 
       {/* Our story */}
-      <section className="bg-white py-10 md:py-12 shadow-md shadow-gray-300 overflow-hidden">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 lg:px-20">
+      <section className="bg-white py-10 md:py-12 lg:py-16 shadow-md shadow-gray-300 overflow-hidden">
+        <div className="container max-w-8xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
           {/* Centered Heading */}
           <motion.h2
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center text-4xl md:text-5xl lg:text-6xl font-primary font-semibold text-gray-900 mb-8 md:mb-10"
+            className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-primary font-semibold text-gray-900 mb-6 sm:mb-8 md:mb-10"
           >
             Our Story
           </motion.h2>
 
-          <div className="flex flex-col-reverse lg:flex-row items-center gap-10">
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-6 sm:gap-8 lg:gap-10">
             {/* Left Side - Text */}
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="w-full lg:w-1/2 text-left"
+              className="w-full lg:w-1/2 text-left mt-6 lg:mt-0 px-6"
             >
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-                Yuvabe Education: <br /> Unleashing Potential <br /> Through
-                Holistic Growth
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">
+                Yuvabe Education: <br className="hidden sm:block" /> Unleashing
+                Potential <br className="hidden sm:block" /> Through Holistic
+                Growth
               </h3>
-              <p className="text-gray-700 text-base md:text-lg mb-4">
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg mb-3 sm:mb-4">
                 At Yuvabe Education in Auroville, we believe in the immense
                 potential innate in every individual, especially the youth. The
                 challenge lies not in capability but in providing access to the
@@ -231,7 +231,7 @@ export default function Home() {
                 learners with a transformative platform that fosters
                 self-awareness, growth, and empowerment.
               </p>
-              <p className="text-gray-700 text-base md:text-lg">
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg">
                 Yuvabe Education was born out of a deep commitment to empowering
                 individuals. We start with external growth areas like acquiring
                 technical and career skills and evolve toward inward
@@ -249,14 +249,23 @@ export default function Home() {
               viewport={{ once: true }}
               className="w-full lg:w-1/2 flex justify-center"
             >
-              <div className="relative w-[280px] md:w-[480px] h-[200px] md:h-[600px]">
+              <div className="relative w-full max-w-[320px] sm:max-w-[550px] md:max-w-[650px] lg:max-w-[700px] h-[220px] sm:h-[320px] md:h-[450px] lg:h-[600px]">
                 <Image
-                  src="/images/home/story2.svg"
+                  src="/images/home/story.webp"
                   alt="Our Story"
-                  width={800}
-                  height={600}
-                  className="rounded-lg w-full h-full "
+                  width={1200}
+                  height={900}
+                  className="rounded-lg w-full h-full object-contain"
                 />
+                <motion.div
+                  className="absolute bottom-0 left-50 md:bottom-15 md:left-80 lg:bottom-0 lg:left-90 w-10 h-10  md:w-26 md:h-26 sm:h-15 sm:w-15 bg-[#91C644] "
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                ></motion.div>
               </div>
             </motion.div>
           </div>
@@ -274,13 +283,19 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="lg:w-1/2 flex justify-center items-center mb-10 lg:mb-0"
+            className="relative lg:w-1/2 flex justify-center items-center mb-10 lg:mb-0"
           >
+            <motion.div
+              className="absolute top-0 left-50 md:top-5 md:left-90 w-15 h-15 md:w-26 md:h-26 bg-[#33BED4] rounded-full"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            ></motion.div>
+
             <Image
-              src="/images/home/thr.svg"
+              src="/images/home/program.webp"
               alt="Children Learning"
-              width={500}
-              height={350}
+              width={800}
+              height={800}
               className="w-[280px] md:w-[480px] h-auto max-w-full"
             />
           </motion.div>
@@ -293,7 +308,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="lg:w-1/2 text-left lg:pl-12"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center md:text-start">
               Through programs like:
             </h2>
             <ul className="list-disc list-inside text-gray-700 space-y-4 leading-7 md:leading-8">
@@ -317,40 +332,38 @@ export default function Home() {
       </section>
 
       {/* Join us  */}
-      <section className="py-16 px-6">
-        <div className="container max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+      <section className="py-16 px-4 sm:px-6 lg:px-10">
+        <div className="container max-w-screen-xl mx-auto flex flex-col md:flex-col lg:flex-row items-center justify-between gap-10">
           {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="md:w-1/2 space-y-4"
+            className="w-full md:w-3/4 lg:w-1/2 space-y-4 text-left px-2 md:px-0"
           >
-            <h2 className="text-[36px] font-bold text-black">
+            <h2 className="text-[24px] sm:text-[28px] md:text-[36px] font-semibold text-black ">
               Join Us in This Mission
             </h2>
-            <p className="text-gray-700 leading-7 text-balance">
+            <p className="text-gray-700 leading-7 text-balance text-sm sm:text-base ">
               For those who feel called to support this initiative, your love
               and blessings can make dreams come true for the talented youth of
-              Auroville and its surrounding villages. Whether on the ground as
-              implementers or as supporters providing resources, you can be part
-              of this transformative journey.
+              Auroville and its surrounding villages.
             </p>
-            <p className="text-gray-700 leading-7 text-balance">
-              We've come this far thanks to the care and generosity of people
-              like you. Together, we can continue to create opportunities for
-              these young learners and help them realize their true potential.
+            <p className="text-gray-700 leading-7 text-balance text-sm sm:text-base ">
+              We've come this far thanks to the generosity of people like you.
+              Together, we can continue to create opportunities and help young
+              learners realize their true potential.
             </p>
-            <p className="text-gray-700 leading-7 text-balance mb-10">
+            <p className="text-gray-700 leading-7 text-balance text-sm sm:text-base mb-6 md:mb-10 ">
               Click here to learn how you can contribute and join us on this
               journey.
             </p>
 
-            {/* <Button href="/donate">Know More</Button> */}
+            {/* Button */}
             <motion.a
               href="#"
-              className="mt-6 inline-block px-6 py-3 text-white bg-[#592AC7] rounded-lg shadow-md hover:bg-purple-700 transition"
+              className="mt-6 mx-auto block sm:inline-block px-6 py-3 text-white bg-[#592AC7] rounded-lg shadow-md hover:bg-white hover:text-[#592ac7] transition w-fit"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -364,16 +377,31 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="md:w-1/2 relative"
+            className="w-full md:w-3/4 lg:w-1/2 flex justify-center"
           >
-            <div className="relative">
+            <div className="relative w-[90%] sm:w-[75%] md:w-3/4 lg:w-full">
               <Image
-                src="/images/home/joinus.svg"
+                src="/images/home/join.webp"
                 alt="Join the mission"
-                width={500}
-                height={500}
-                className="rounded-lg"
+                width={800}
+                height={800}
+                className="rounded-lg object-cover w-full"
               />
+
+              {/* Floating Triangle Decoration */}
+              <motion.div
+                className="absolute bottom-5 left-5 md:bottom-50 md:left-10 w-0 h-0 rotate-10
+            border-l-[30px] sm:border-l-[40px] md:border-l-[46px] 
+            border-r-[30px] sm:border-r-[40px] md:border-r-[46px] 
+            border-b-[60px] sm:border-b-[75px] md:border-b-[82px] border-transparent 
+          border-b-[#F8A91E] z-10"
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              ></motion.div>
             </div>
           </motion.div>
         </div>
@@ -381,27 +409,31 @@ export default function Home() {
 
       {/* Vision & Mission */}
       <section className="bg-[#592AC7] text-white py-16 px-4 sm:px-6 lg:px-12">
-        <div className="container max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+        <div className="container max-w-screen-xl mx-auto flex flex-col md:flex-col lg:flex-row items-start justify-between gap-6 md:gap-10">
           {/* Left: Vision & Mission Text */}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="w-full md:w-1/2 space-y-6"
+            className="w-full lg:w-1/2 space-y-6 text-left"
           >
-            <h2 className="text-3xl md:text-4xl font-bold">Our Vision</h2>
-            <p className="text-lg md:text-xl leading-7">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+              Our Vision
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl leading-7">
               To nurture a generation of self-aware, skilled, and purpose-driven
               individuals who contribute meaningfully to the world, guided by
               inner exploration and outward impact.
             </p>
 
-            <h2 className="text-3xl md:text-4xl font-bold">Our Mission</h2>
-            <p className="text-lg md:text-xl">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+              Our Mission
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl">
               Through Yuvabe Education, we aim to:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-lg md:text-xl">
+            <ul className="list-disc pl-6 space-y-2 text-base sm:text-lg md:text-xl">
               <li>
                 Equip individuals with futuristic skills for career success.
               </li>
@@ -427,9 +459,9 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="w-full md:w-1/2 flex justify-center"
+            className="w-full lg:w-1/2 flex justify-center"
           >
-            <div className="relative w-full max-w-[90%] md:max-w-[600px] lg:max-w-[800px]">
+            <div className="relative w-full max-w-[90%] sm:max-w-[75%] md:max-w-[600px] lg:max-w-[800px]">
               <Image
                 src="/images/home/misvis.svg"
                 alt="Vision Mission"
@@ -451,21 +483,21 @@ export default function Home() {
           </h2>
 
           {/* Zig-Zag Line SVG */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-950 hidden md:block">
+          <div className="absolute left-1/2 -translate-x-[50%] lg:top-1000 md:top-1380 hidden md:block">
             <Image
               src="/images/home/plane2.gif"
               alt="Paper Plane"
-              width={600}
-              height={600}
+              width={550}
+              height={550}
             />
           </div>
 
           <div className="space-y-28 mt-16">
             {/* Work Section */}
             <motion.div
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1 }}
-               transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 50 }} // Fades in from below
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               className="flex flex-col md:flex-row items-center gap-16"
             >
               <div className="md:w-3/4 space-y-4 text-left">
@@ -479,7 +511,7 @@ export default function Home() {
               </div>
               <div className="md:w-1/2 flex justify-center">
                 <Image
-                  src="/images/home/work.svg"
+                  src="/images/home/arjun.png"
                   alt="Work"
                   width={600}
                   height={600}
@@ -489,9 +521,9 @@ export default function Home() {
 
             {/* Serve Section */}
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
+              initial={{ opacity: 0, y: 50 }} // Fades in from below
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 1 }}
               className="flex flex-col md:flex-row-reverse items-center gap-18"
             >
               <div className="md:w-3/4 space-y-4 text-left">
@@ -513,26 +545,26 @@ export default function Home() {
                     duration: 2,
                     repeat: Infinity,
                     repeatType: "reverse",
-                    ease: "easeInOut",
+                    ease: "easeInOut"
                   }}
                 />
                 <Image
-                  src="/images/home/serve.svg"
+                  src="/images/home/hema.png"
                   alt="Serve"
-                  width={600}
-                  height={600}
+                  width={800}
+                  height={800}
                 />
               </div>
             </motion.div>
 
             {/* Evolve Section */}
             <motion.div
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1 }}
-               transition={{ duration: 0.6, delay: 2 }}
+              initial={{ opacity: 0, y: 50 }} // Fades in from below
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 1.5 }}
               className="flex flex-col md:flex-row items-center gap-16"
             >
-              <div className="md:w-3/4 space-y-4 text-left">
+              <div className="md:w-1/2 space-y-4 text-left">
                 <h3 className="text-[36px] font-semibold font-primary">
                   Evolve
                 </h3>
@@ -543,15 +575,19 @@ export default function Home() {
                 </p>
                 <Button href="#">Read more</Button>
               </div>
-              <div className="md:w-90% flex justify-center relative">
-                <div className="absolute -top-4 -right-6 w-25 h-25 bg-orange-400 rotate-12 "></div>
-                <Image
-                  src="/images/home/evolve.svg"
-                  alt="Evolve"
-                  width={800}
-                  height={600}
-                />
-                <div className="absolute bottom-2 right-2 w-15 h-15 bg-blue-400 rounded-full"></div>
+              <div className="w-full md:w-1/2 flex justify-center relative">
+                <div className="absolute -top-4 -right-6 w-24 h-24 bg-orange-400 rotate-12"></div>
+                <div className="relative w-full max-w-lg">
+                  <Image
+                    src="/images/home/Priya.png"
+                    alt="Evolve"
+                    width={800}
+                    height={800}
+                    className="w-full h-auto object-contain"
+                    priority
+                  />
+                </div>
+                <div className="absolute bottom-2 right-2 w-16 h-16 bg-blue-400 rounded-full"></div>
               </div>
             </motion.div>
           </div>
@@ -583,7 +619,7 @@ export default function Home() {
             breakpoints={{
               640: { slidesPerView: 1 },
               768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
+              1024: { slidesPerView: 3 }
             }}
             autoplay={{ delay: 4000 }}
             className="w-full"
@@ -594,7 +630,7 @@ export default function Home() {
                 <motion.div
                   className={`shadow-lg rounded-[20px] overflow-hidden w-full sm:w-[350px] md:w-[370px] h-auto min-h-[500px] flex flex-col mb-8 border-2 ${
                     index % 2 === 0
-                      ? "border-[#33BED4] bg-[#33BED4]-100"
+                      ? "border-[#33BED4] bg-[#33BED4]-200"
                       : "border-[#91C644] bg-[#91C644]-100"
                   }`}
                   initial={{ opacity: 0, y: 30 }}
@@ -614,7 +650,7 @@ export default function Home() {
                     <span
                       className={`absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded ${
                         course.status === "Active"
-                          ? "bg-purple-600 text-white"
+                          ? "bg-[#592ac7] text-white"
                           : "bg-blue-600 text-white"
                       }`}
                     >
@@ -685,7 +721,7 @@ export default function Home() {
               placeholder="Enter Your email"
               className="w-2/3 px-4 py-3 rounded-lg border border-gray-300 bg-[#FFFFFF] text-black focus:outline-none"
             />
-            <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-6 py-3 rounded-lg">
+            <button className="bg-[#FFCA2D] hover:bg-yellow-600 text-black font-medium px-6 py-3 rounded-lg">
               Send
             </button>
           </div>

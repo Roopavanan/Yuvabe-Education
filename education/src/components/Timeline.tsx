@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function TransformationJourney() {
   return (
     <section className="flex flex-col items-center justify-center px-6 md:px-16 py-12 bg-[#FDF8EE]">
-      <h2 className="text-3xl md:text-[64px] font-semibold text-black mb-18 text-center">
+      <h2 className="text-3xl md:text-[64px] font-semibold text-black mb-24 text-center">
         Transformation Journey
       </h2>
 
@@ -25,7 +25,7 @@ export default function TransformationJourney() {
             <span className="text-[#592AC7]">STEAM</span>
             <div className="w-4 h-4 bg-[#592AC7] rounded-full mb-2"></div>
           </div>
-          <div className="absolute left-[35%] bottom-[50%] flex flex-col items-center">
+          <div className="absolute left-[35%] bottom-[50%] flex flex-col items-center mb-6">
             <span className="font-semibold">18-22 Yrs</span>
             <span className="text-[#592AC7]">BRIDGE</span>
             <div className="w-4 h-4 bg-[#592AC7] rounded-full mb-2"></div>
