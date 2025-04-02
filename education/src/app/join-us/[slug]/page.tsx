@@ -9,19 +9,16 @@ interface Post {
 }
 
 const fetchPost = async (slug: string) => {
-  const response = await fetch(
-    "http://yuvabe-education-wordpress.local/graphql",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: GET_POST_BY_SLUG,
-        variables: { slug },
-      }),
-    }
-  );
+  const response = await fetch("https://wp.yuvabeeducation.com/graphql", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: GET_POST_BY_SLUG,
+      variables: { slug },
+    }),
+  });
 
   const result = await response.json();
   return result?.data?.postBy || null;

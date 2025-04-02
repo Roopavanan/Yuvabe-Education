@@ -1,6 +1,8 @@
 import JDS from "@/components/JDS";
 import Image from "react";
 import React from "react";
+// import Aianimate from "@/components/aianimate";
+
 export default function Join_Us() {
   return (
     <>
@@ -24,21 +26,22 @@ export default function Join_Us() {
                 <br />
                 Based in Auroville, an experimental, international community in
                 southern India, we’re on a mission to blend purpose, innovation,
-                and impact. Join us in shaping a world where work isn’t just a
-                job, it’s a journey.
+                and impact. Join us in shaping a world where work npmisn’t just
+                a job, it’s a journey.
               </p>
             </div>
             {/* Right */}
             <div className="w-full xl:w-1/2 flex justify-center  xl:justify-end relative ">
-              <img
+              {/* <img
                 src="images/join-us/YB IMAGES EDITS (2) 1.png"
                 alt=""
                 width={603.65625}
                 height={545.3984375}
                 className="z-10"
-              />
+              /> */}
+              {/* <Aianimate /> */}
               {/* Blue Circle Large */}
-              <svg
+              {/* <svg
                 width="496"
                 height="497"
                 viewBox="0 0 496 497"
@@ -47,10 +50,9 @@ export default function Join_Us() {
                 className="absolute left-0 top-[-10%]"
               >
                 <circle cx="247.929" cy="248.573" r="247.616" fill="#33BED4" />
-              </svg>
-
+              </svg> */}
               {/* Green Circle Small */}
-              <svg
+              {/* <svg
                 width="239"
                 height="240"
                 viewBox="0 0 239 240"
@@ -59,7 +61,7 @@ export default function Join_Us() {
                 className="absolute left-[-7.5%] bottom-[10%]"
               >
                 <circle cx="119.496" cy="119.82" r="119.332" fill="#91C644" />
-              </svg>
+              </svg> */}
             </div>
           </div>
         </div>

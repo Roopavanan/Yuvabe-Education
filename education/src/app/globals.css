@@ -102,3 +102,30 @@
 .blog-list-block>div:nth-child(3n+2)>.blog-list-image {
   border-radius: 40.76px 12.23px;
 }
+
+.blog p {
+  font-family: 'Nunito Sans';
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 400;
+  color: black;
+  margin-top: 20px;
+}
+
+.blog>p:nth-child(1) {
+  margin-top: 0;
+}
+
+.blog h1,
+.blog h2,
+.blog h3,
+.blog h4,
+.blog h5,
+.blog h6 {
+  font-family: 'Poppins';
+  font-weight: 600;
+  line-height: 120%;
+  font-size: 32px;
+  color: black;
+  margin-top: 20px;
+}

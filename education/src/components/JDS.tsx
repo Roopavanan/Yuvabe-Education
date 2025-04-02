@@ -33,18 +33,15 @@ const JDS: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(
-          "http://yuvabe-education-wordpress.local/graphql",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              query: GET_JDS,
-            }),
-          }
-        );
+        const response = await fetch("https://wp.yuvabeeducation.com/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: GET_JDS,
+          }),
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -91,7 +88,7 @@ const JDS: React.FC = () => {
                       <h3 className="text-black text-2xl md:text-[40px] leading-[120%] font-semibold text-center font-primary">
                         {job.title} |
                         <span>
-                          {job.jobDescriptions?.experience || "Not specified"}
+                          &nbsp;{job.jobDescriptions?.experience || ""}
                         </span>
                       </h3>
                       <p

@@ -128,7 +128,7 @@ const AllPosts: React.FC = () => {
         <title>All Posts</title>
       </Head>
 
-      <main>
+      {/* <main>
         <h1>All Posts</h1>
 
         <div>
@@ -208,7 +208,7 @@ const AllPosts: React.FC = () => {
           )}
         </div>
       </main>
-      <Blogtemp />
+      <Blogtemp /> */}
       <FeaturedPosts />
       <BlogPosts />
     </div>

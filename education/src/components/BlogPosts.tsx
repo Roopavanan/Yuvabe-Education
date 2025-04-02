@@ -127,7 +127,6 @@ const BlogPosts: React.FC = () => {
       </Head>
 
       <main>
-        <h1>All Posts</h1>
         {/* Wrapper */}
         <div className="bg-color py-32">
           <div className="max-w-[1028px] flex flex-col m-auto">

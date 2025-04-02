@@ -92,7 +92,12 @@ const FeaturedPosts: React.FC = () => {
 
         const result: AllPostsData = await response.json();
 
-        setPosts(result.data.posts.nodes);
+        // Filter posts to include only those with featuredPost: true
+        const featuredPosts = result.data.posts.nodes.filter(
+          (post) => post.featuredPost && post.featuredPost.featuredPost === true
+        );
+
+        setPosts(featuredPosts);
         setPageInfo(result.data.posts.pageInfo);
       } catch (err: any) {
         setError(err.message);
