@@ -68,24 +68,21 @@ const BlogPosts: React.FC = () => {
       setError(null);
       setPosts([]);
       try {
-        const response = await fetch(
-          "http://yuvabe-education-wordpress.local/graphql",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
+        const response = await fetch("https://wp.yuvabeeducation.com/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: GET_ALL_POSTS,
+            variables: {
+              after,
+              before,
+              first: after ? POSTS_PER_PAGE : null, // Pagination when fetching forward
+              last: before ? POSTS_PER_PAGE : null, // Pagination when fetching backward
             },
-            body: JSON.stringify({
-              query: GET_ALL_POSTS,
-              variables: {
-                after,
-                before,
-                first: after ? POSTS_PER_PAGE : null, // Pagination when fetching forward
-                last: before ? POSTS_PER_PAGE : null, // Pagination when fetching backward
-              },
-            }),
-          }
-        );
+          }),
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
