@@ -1,4 +1,92 @@
-export default function Newsletters() {
+"use client";
+import React, { useState, useEffect } from "react";
+import { GET_NEWS } from "src/lib/graphqlRequest";
+import Image from "next/image"; // Import the Next.js Image component
+import Link from "next/link"; // Import the Next.js Link component
+interface NewsletterData {
+  groupforNews: {
+    content: string;
+    link: {
+      url: string;
+    };
+    month: string;
+    year: string;
+    date: string;
+  };
+  featuredImage?: {
+    node: {
+      altText: string;
+      sourceUrl: string;
+    };
+  };
+}
+
+interface NewsletterNode {
+  nodes: NewsletterData[];
+}
+
+interface NewsletterResponse {
+  data: {
+    newsletters: NewsletterNode;
+  };
+}
+
+const Newsletters: React.FC = () => {
+  const [newsletters, setNewsletters] = useState<NewsletterData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const GET_ALL_NEWS = GET_NEWS;
+
+  useEffect(() => {
+    const fetchNewsletters = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch("https://wp.yuvabeeducation.com/graphql", {
+          // Replace with your GraphQL endpoint
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ query: GET_ALL_NEWS }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data: NewsletterResponse = await response.json();
+
+        if (data.data && data.data.newsletters && data.data.newsletters.nodes) {
+          const sortedNewsletters = data.data.newsletters.nodes.sort((a, b) => {
+            const dateA = new Date(a.groupforNews.date);
+            const dateB = new Date(b.groupforNews.date);
+            return dateB.getTime() - dateA.getTime(); // Sort descending (newest first)
+          });
+
+          setNewsletters(sortedNewsletters);
+        } else {
+          setError("No newsletters found.");
+        }
+      } catch (err: any) {
+        setError(err.message || "Failed to fetch newsletters.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNewsletters();
+  }, [GET_ALL_NEWS]);
+
+  if (loading) {
+    return <div>Loading newsletters...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div>
       {/* Wrapper */}
@@ -11,226 +99,59 @@ export default function Newsletters() {
             </h1>
             {/* Individual Newsletter Blocks */}
             <div className="flex flex-col gap-32 relative  md:flex-row md:flex-wrap md:justify-between xl:flex-col xl:flex-nowrap">
-              <div className="flex flex-row gap-x-[77px] justify-between min-h-[456px] z-10 flex-wrap xl:flex-nowrap lg:w-[100%] md:w-[41%] gap-y-4 w-full">
-                {/* Left */}
-                <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
-                  <img
-                    src="/images\blogs\test.png"
-                    alt=""
-                    width={347}
-                    height={326}
-                    className="h-full object-cover rounded-t-[20px] rounded-tl-[20px] w-full"
-                  />
-                  {/* Title */}
-                  <div className="flex flex-col gap-x-2  py-6 px-3">
-                    <h2 className="uppercase font-primary font-semibold text-black text-[20px] leading-[25.98px] xl:text-center">
-                      YUVABEAT
-                    </h2>
-                    <p className="font-secondary font-medium text-black text-[14px] leading-[25.98px] pb-6 xl:text-center">
-                      Embracing fresh beginnings!
-                    </p>
+              {newsletters.map((newsletter, index) => (
+                <div key={index}>
+                  <div className="flex flex-row gap-x-[77px] justify-between min-h-[456px] z-10 flex-wrap xl:flex-nowrap lg:w-[100%] md:w-[41%] gap-y-4 w-full">
+                    {/* Left */}
+                    <div className="flex flex-col  rounded-[20px] w-full  bg-transparent xl:w-[34%] md:max-h-[400px] xl:max-h-full justify-center">
+                      {newsletter.featuredImage &&
+                        newsletter.featuredImage.node && (
+                          <img
+                            src={newsletter.featuredImage.node.sourceUrl}
+                            alt={newsletter.featuredImage.node.altText}
+                            className="h-full rounded-t-[20px] rounded-tl-[20px] w-full z-10 max-h-[265px] max-w-[265px]"
+                            width={265}
+                            height={265}
+                          />
+                        )}
+                      {/* Title */}
+                      {/* <div className="flex flex-col gap-x-2  py-6 px-3">
+                        <h2 className="uppercase font-primary font-semibold text-black text-[20px] leading-[25.98px] xl:text-center">
+                          YUVABEAT
+                        </h2>
+                        <p className="font-secondary font-medium text-black text-[14px] leading-[25.98px] pb-6 xl:text-center">
+                          Embracing fresh beginnings!
+                        </p>
+                      </div> */}
+                    </div>
+                    {/* Right */}
+                    <div className="flex flex-col gap-y-8 justify-center w-full xl:w-[59%]">
+                      {/* Date and Content */}
+                      <div className="flex flex-col gap-y-6 px-3    ">
+                        <h3 className="font-primary font-semibold text-black text-4xl leading-[120%]">
+                          <span>{newsletter.groupforNews.month}</span>
+                          &nbsp;
+                          <span>{newsletter.groupforNews.year}</span>
+                        </h3>
+                        <p className="font-secondary font-normal text-black text-[18px] leading-[30px]">
+                          {newsletter.groupforNews.content}
+                        </p>
+                        {/* Read More Button */}
+                        <Link
+                          href={newsletter.groupforNews.link.url}
+                          target="_blank"
+                        >
+                          <div className="bg-[#592AC7] py-[18px] px-8 w-[142px] rounded-[15px]">
+                            <p className="font-primary font-semibold text-white text-[14px] leading-[150%]">
+                              Read More
+                            </p>
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                {/* Right */}
-                <div className="flex flex-col gap-y-8 justify-center w-full xl:w-[59%]">
-                  {/* Date and Content */}
-                  <div className="flex flex-col gap-y-6 px-3    ">
-                    <h3 className="font-primary font-semibold text-black text-4xl leading-[120%]">
-                      February 2025
-                    </h3>
-                    <p className="font-secondary font-normal text-black text-[18px] leading-[30px]">
-                      Every journey starts with a dream, but sometimes, the path
-                      we envision changes in unexpected ways. For Madhan Raj,
-                      financial realities led him down a different road than his
-                      initial passion. His story is one of growth and grit.
-                      Here, he shares his evolution from a curious student to a
-                      full-fledged full stack developer.
-                    </p>
-                  </div>
-                  {/* Read More Button */}
-                  <div className="bg-[#592AC7] py-[18px] px-8 w-[142px] rounded-[15px]">
-                    <p className="font-primary font-semibold text-white text-[14px] leading-[150%]">
-                      Read More
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-row gap-x-[77px] justify-between min-h-[456px] z-10 flex-wrap xl:flex-nowrap lg:w-[100%] md:w-[41%] gap-y-4 w-full">
-                {/* Left */}
-                <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
-                  <img
-                    src="/images\blogs\test.png"
-                    alt=""
-                    width={347}
-                    height={326}
-                    className="h-full object-cover rounded-t-[20px] rounded-tl-[20px] w-full"
-                  />
-                  {/* Title */}
-                  <div className="flex flex-col gap-x-2  py-6 px-3">
-                    <h2 className="uppercase font-primary font-semibold text-black text-[20px] leading-[25.98px] xl:text-center">
-                      YUVABEAT
-                    </h2>
-                    <p className="font-secondary font-medium text-black text-[14px] leading-[25.98px] pb-6 xl:text-center">
-                      Embracing fresh beginnings!
-                    </p>
-                  </div>
-                </div>
-                {/* Right */}
-                <div className="flex flex-col gap-y-8 justify-center w-full xl:w-[59%]">
-                  {/* Date and Content */}
-                  <div className="flex flex-col gap-y-6 px-3    ">
-                    <h3 className="font-primary font-semibold text-black text-4xl leading-[120%]">
-                      February 2025
-                    </h3>
-                    <p className="font-secondary font-normal text-black text-[18px] leading-[30px]">
-                      Every journey starts with a dream, but sometimes, the path
-                      we envision changes in unexpected ways. For Madhan Raj,
-                      financial realities led him down a different road than his
-                      initial passion. His story is one of growth and grit.
-                      Here, he shares his evolution from a curious student to a
-                      full-fledged full stack developer.
-                    </p>
-                  </div>
-                  {/* Read More Button */}
-                  <div className="bg-[#592AC7] py-[18px] px-8 w-[142px] rounded-[15px]">
-                    <p className="font-primary font-semibold text-white text-[14px] leading-[150%]">
-                      Read More
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-row gap-x-[77px] justify-between min-h-[456px] z-10 flex-wrap xl:flex-nowrap lg:w-[100%] md:w-[41%] gap-y-4 w-full">
-                {/* Left */}
-                <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
-                  <img
-                    src="/images\blogs\test.png"
-                    alt=""
-                    width={347}
-                    height={326}
-                    className="h-full object-cover rounded-t-[20px] rounded-tl-[20px] w-full"
-                  />
-                  {/* Title */}
-                  <div className="flex flex-col gap-x-2  py-6 px-3">
-                    <h2 className="uppercase font-primary font-semibold text-black text-[20px] leading-[25.98px] xl:text-center">
-                      YUVABEAT
-                    </h2>
-                    <p className="font-secondary font-medium text-black text-[14px] leading-[25.98px] pb-6 xl:text-center">
-                      Embracing fresh beginnings!
-                    </p>
-                  </div>
-                </div>
-                {/* Right */}
-                <div className="flex flex-col gap-y-8 justify-center w-full xl:w-[59%]">
-                  {/* Date and Content */}
-                  <div className="flex flex-col gap-y-6 px-3    ">
-                    <h3 className="font-primary font-semibold text-black text-4xl leading-[120%]">
-                      February 2025
-                    </h3>
-                    <p className="font-secondary font-normal text-black text-[18px] leading-[30px]">
-                      Every journey starts with a dream, but sometimes, the path
-                      we envision changes in unexpected ways. For Madhan Raj,
-                      financial realities led him down a different road than his
-                      initial passion. His story is one of growth and grit.
-                      Here, he shares his evolution from a curious student to a
-                      full-fledged full stack developer.
-                    </p>
-                  </div>
-                  {/* Read More Button */}
-                  <div className="bg-[#592AC7] py-[18px] px-8 w-[142px] rounded-[15px]">
-                    <p className="font-primary font-semibold text-white text-[14px] leading-[150%]">
-                      Read More
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-row gap-x-[77px] justify-between min-h-[456px] z-10 flex-wrap xl:flex-nowrap lg:w-[100%] md:w-[41%] gap-y-4 w-full">
-                {/* Left */}
-                <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
-                  <img
-                    src="/images\blogs\test.png"
-                    alt=""
-                    width={347}
-                    height={326}
-                    className="h-full object-cover rounded-t-[20px] rounded-tl-[20px] w-full"
-                  />
-                  {/* Title */}
-                  <div className="flex flex-col gap-x-2  py-6 px-3">
-                    <h2 className="uppercase font-primary font-semibold text-black text-[20px] leading-[25.98px] xl:text-center">
-                      YUVABEAT
-                    </h2>
-                    <p className="font-secondary font-medium text-black text-[14px] leading-[25.98px] pb-6 xl:text-center">
-                      Embracing fresh beginnings!
-                    </p>
-                  </div>
-                </div>
-                {/* Right */}
-                <div className="flex flex-col gap-y-8 justify-center w-full xl:w-[59%]">
-                  {/* Date and Content */}
-                  <div className="flex flex-col gap-y-6 px-3    ">
-                    <h3 className="font-primary font-semibold text-black text-4xl leading-[120%]">
-                      February 2025
-                    </h3>
-                    <p className="font-secondary font-normal text-black text-[18px] leading-[30px]">
-                      Every journey starts with a dream, but sometimes, the path
-                      we envision changes in unexpected ways. For Madhan Raj,
-                      financial realities led him down a different road than his
-                      initial passion. His story is one of growth and grit.
-                      Here, he shares his evolution from a curious student to a
-                      full-fledged full stack developer.
-                    </p>
-                  </div>
-                  {/* Read More Button */}
-                  <div className="bg-[#592AC7] py-[18px] px-8 w-[142px] rounded-[15px]">
-                    <p className="font-primary font-semibold text-white text-[14px] leading-[150%]">
-                      Read More
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-row gap-x-[77px] justify-between min-h-[456px] z-10 flex-wrap xl:flex-nowrap lg:w-[100%] md:w-[41%] gap-y-4 w-full">
-                {/* Left */}
-                <div className="flex flex-col  rounded-[20px] w-full box-shadow-secondary bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full">
-                  <img
-                    src="/images\blogs\test.png"
-                    alt=""
-                    width={347}
-                    height={326}
-                    className="h-full object-cover rounded-t-[20px] rounded-tl-[20px] w-full"
-                  />
-                  {/* Title */}
-                  <div className="flex flex-col gap-x-2  py-6 px-3">
-                    <h2 className="uppercase font-primary font-semibold text-black text-[20px] leading-[25.98px] xl:text-center">
-                      YUVABEAT
-                    </h2>
-                    <p className="font-secondary font-medium text-black text-[14px] leading-[25.98px] pb-6 xl:text-center">
-                      Embracing fresh beginnings!
-                    </p>
-                  </div>
-                </div>
-                {/* Right */}
-                <div className="flex flex-col gap-y-8 justify-center w-full xl:w-[59%]">
-                  {/* Date and Content */}
-                  <div className="flex flex-col gap-y-6 px-3    ">
-                    <h3 className="font-primary font-semibold text-black text-4xl leading-[120%]">
-                      February 2025
-                    </h3>
-                    <p className="font-secondary font-normal text-black text-[18px] leading-[30px]">
-                      Every journey starts with a dream, but sometimes, the path
-                      we envision changes in unexpected ways. For Madhan Raj,
-                      financial realities led him down a different road than his
-                      initial passion. His story is one of growth and grit.
-                      Here, he shares his evolution from a curious student to a
-                      full-fledged full stack developer.
-                    </p>
-                  </div>
-                  {/* Read More Button */}
-                  <div className="bg-[#592AC7] py-[18px] px-8 w-[142px] rounded-[15px]">
-                    <p className="font-primary font-semibold text-white text-[14px] leading-[150%]">
-                      Read More
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
 
               <div className="svgs">
                 {/* Yellow Crescent */}
@@ -323,8 +244,11 @@ export default function Newsletters() {
               </div>
             </div>
           </div>
+          <div />
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Newsletters;

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { GET_ALL_POSTS } from "@/lib/graphqlRequest";
+import { GET_ALL_POSTS } from "src/lib/graphqlRequest";
 import Image from "next/image";
 
 interface CategoryNode {
@@ -68,24 +68,21 @@ const BlogPosts: React.FC = () => {
       setError(null);
       setPosts([]);
       try {
-        const response = await fetch(
-          "http://yuvabe-education-wordpress.local/graphql",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
+        const response = await fetch("https://wp.yuvabeeducation.com/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: GET_ALL_POSTS,
+            variables: {
+              after,
+              before,
+              first: after ? POSTS_PER_PAGE : null, // Pagination when fetching forward
+              last: before ? POSTS_PER_PAGE : null, // Pagination when fetching backward
             },
-            body: JSON.stringify({
-              query: GET_ALL_POSTS,
-              variables: {
-                after,
-                before,
-                first: after ? POSTS_PER_PAGE : null, // Pagination when fetching forward
-                last: before ? POSTS_PER_PAGE : null, // Pagination when fetching backward
-              },
-            }),
-          }
-        );
+          }),
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -130,7 +127,6 @@ const BlogPosts: React.FC = () => {
       </Head>
 
       <main>
-        <h1>All Posts</h1>
         {/* Wrapper */}
         <div className="bg-color py-32">
           <div className="max-w-[1028px] flex flex-col m-auto">
@@ -144,7 +140,7 @@ const BlogPosts: React.FC = () => {
                     className="flex flex-col flex-wrap items-start p-10 bg-white gap-[22.59px] border-radius-18 w-full xl:min-h-[450px] box-shadow-default blog-list-box z-10 md:w-[45%] xl:w-[31%] hover:bg-[#592AC7] group"
                   >
                     <Link
-                      href={`/blogs/${post.slug}`}
+                      href={`blogs/${post.slug}`}
                       style={{ textDecoration: "none" }}
                     >
                       {post.featuredImage?.node?.sourceUrl && (

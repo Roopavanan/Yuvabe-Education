@@ -2,7 +2,7 @@
 
 const endpoint = process.env.WORDPRESS_GRAPHQL_ENDPOINT || "";
 export const GET_ALL_POSTS = `query AllPosts {
-  posts(where: {status: PUBLISH},first:9) {
+  posts(where: {status: PUBLISH}) {
     nodes {
       categories {
         nodes {
@@ -43,6 +43,7 @@ export const GET_POST_BY_SLUG = `
       title
       content
       date
+         readingTime
     }
   }
 `;
@@ -74,3 +75,25 @@ export const GET_JDS_BY_SLUG = `
           }
         }
 `;
+
+export const GET_NEWS = `query News {
+  newsletters {
+    nodes {
+      groupforNews {
+        content
+        link {
+          url
+        }
+        month
+        year
+        date
+      }
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+        }
+      }
+    }
+  }
+}`;

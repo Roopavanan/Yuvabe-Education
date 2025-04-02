@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { GET_ALL_POSTS } from "@/lib/graphqlRequest";
+import { GET_ALL_POSTS } from "src/lib/graphqlRequest";
 import Image from "next/image";
 
 interface CategoryNode {
@@ -70,24 +70,21 @@ const FeaturedPosts: React.FC = () => {
       setError(null);
       setPosts([]);
       try {
-        const response = await fetch(
-          "http://yuvabe-education-wordpress.local/graphql",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
+        const response = await fetch("https://wp.yuvabeeducation.com/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: GET_ALL_POSTS,
+            variables: {
+              after,
+              before,
+              first: after ? POSTS_PER_PAGE : null, // Pagination when fetching forward
+              last: before ? POSTS_PER_PAGE : null, // Pagination when fetching backward
             },
-            body: JSON.stringify({
-              query: GET_ALL_POSTS,
-              variables: {
-                after,
-                before,
-                first: after ? POSTS_PER_PAGE : null, // Pagination when fetching forward
-                last: before ? POSTS_PER_PAGE : null, // Pagination when fetching backward
-              },
-            }),
-          }
-        );
+          }),
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -95,7 +92,12 @@ const FeaturedPosts: React.FC = () => {
 
         const result: AllPostsData = await response.json();
 
-        setPosts(result.data.posts.nodes);
+        // Filter posts to include only those with featuredPost: true
+        const featuredPosts = result.data.posts.nodes.filter(
+          (post) => post.featuredPost && post.featuredPost.featuredPost === true
+        );
+
+        setPosts(featuredPosts);
         setPageInfo(result.data.posts.pageInfo);
       } catch (err: any) {
         setError(err.message);
@@ -144,18 +146,18 @@ const FeaturedPosts: React.FC = () => {
         <h1>Featured Posts</h1>
         {/* Wrapper */}
         <div className="bg-color py-32">
-          <div className="max-w-[1028px] flex flex-col m-auto">
+          <div className="max-w-[1240px] flex flex-col m-auto">
             <div className=" flex flex-col gap-x-16 relative">
               <h1 className="text-[#592AC7] text-[64px] leading-[120%] font-semibold text-center ">
                 Blogs
               </h1>
-              <div className="flex flex-col gap-y-8">
+              <div className="flex flex-col gap-y-8 max-w-[1280px] items-center">
                 {/* Featured Blog */}
 
                 {posts.map((post) => (
                   <div key={post.id} className="z-10">
                     <Link
-                      href={`/blogs/${post.slug}`}
+                      href={`blogs/${post.slug}`}
                       style={{ textDecoration: "none" }}
                     >
                       <div className="flex flex-row gap-16 justify-between flex-wrap px-5 py-[52px] bg-white my-16 rounded-3xl xl:gap-16 xl:max-w-5xl xl:px-16 xl:py-[52px] xl:my-16 xl:flex-nowrap md:px-16 md:py-[52px] z-10">
@@ -210,7 +212,14 @@ const FeaturedPosts: React.FC = () => {
               </div>
 
               <div className="svg">
-                <svg
+                <Image
+                  src={"/images/paper plane common.gif"}
+                  alt={"ALT"}
+                  width={1434}
+                  height={560}
+                  className="absolute left-[0%] top-[0%] hidden xl:block"
+                ></Image>
+                {/* <svg
                   width="1434"
                   height="560"
                   viewBox="0 0 1434 560"
@@ -230,7 +239,7 @@ const FeaturedPosts: React.FC = () => {
                     stroke="black"
                     strokeWidth="2"
                   />
-                </svg>
+                </svg> */}
               </div>
             </div>
           </div>

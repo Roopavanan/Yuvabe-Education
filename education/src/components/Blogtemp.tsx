@@ -266,6 +266,7 @@ const blogtemp = () => {
           </div>
         </div>
       </div>
+      {/* Form */}
       <div className="bg-white py-[128px]">
         <div className="max-w-[1228px] flex flex-row m-auto justify-between gap-10 flex-wrap xl:flex-nowrap px-5">
           {/* Left Form */}

@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { GET_ALL_POSTS } from "@/lib/graphqlRequest";
-import BlogPosts from "@/components/BlogPosts";
+import { GET_ALL_POSTS } from "src/lib/graphqlRequest";
 import Blogtemp from "@/components/Blogtemp";
+import BlogPosts from "@/components/BlogPosts";
 import FeaturedPosts from "@/components/FeaturedPosts";
 
 interface CategoryNode {
@@ -70,24 +70,21 @@ const AllPosts: React.FC = () => {
       setError(null);
       setPosts([]);
       try {
-        const response = await fetch(
-          "http://yuvabe-education-wordpress.local/graphql",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
+        const response = await fetch("https://wp.yuvabeeducation.com/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: GET_ALL_POSTS,
+            variables: {
+              after,
+              before,
+              first: after ? POSTS_PER_PAGE : null, // Pagination when fetching forward
+              last: before ? POSTS_PER_PAGE : null, // Pagination when fetching backward
             },
-            body: JSON.stringify({
-              query: GET_ALL_POSTS,
-              variables: {
-                after,
-                before,
-                first: after ? POSTS_PER_PAGE : null, // Pagination when fetching forward
-                last: before ? POSTS_PER_PAGE : null, // Pagination when fetching backward
-              },
-            }),
-          }
-        );
+          }),
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -131,7 +128,7 @@ const AllPosts: React.FC = () => {
         <title>All Posts</title>
       </Head>
 
-      <main>
+      {/* <main>
         <h1>All Posts</h1>
 
         <div>
@@ -211,7 +208,7 @@ const AllPosts: React.FC = () => {
           )}
         </div>
       </main>
-      <Blogtemp />
+      <Blogtemp /> */}
       <FeaturedPosts />
       <BlogPosts />
     </div>

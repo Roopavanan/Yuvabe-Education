@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { GET_JDS } from "@/lib/graphqlRequest";
+import { GET_JDS } from "src/lib/graphqlRequest";
 
 interface JobDescriptionNode {
   content: string;
@@ -33,18 +33,15 @@ const JDS: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(
-          "http://yuvabe-education-wordpress.local/graphql",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              query: GET_JDS,
-            }),
-          }
-        );
+        const response = await fetch("https://wp.yuvabeeducation.com/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: GET_JDS,
+          }),
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -91,7 +88,7 @@ const JDS: React.FC = () => {
                       <h3 className="text-black text-2xl md:text-[40px] leading-[120%] font-semibold text-center font-primary">
                         {job.title} |
                         <span>
-                          {job.jobDescriptions?.experience || "Not specified"}
+                          &nbsp;{job.jobDescriptions?.experience || ""}
                         </span>
                       </h3>
                       <p
@@ -99,7 +96,7 @@ const JDS: React.FC = () => {
                         dangerouslySetInnerHTML={{ __html: job.excerpt }}
                       ></p>
                       {/* Read More Button */}
-                      <Link href={`/join-us/${job.slug}`}>
+                      <Link href={`get-involved/join-us/${job.slug}`}>
                         <div className="bg-[#592AC7] py-[18px] px-8 w-[142px] rounded-[15px] mt-2">
                           <p className="font-primary font-semibold text-white text-[14px] leading-[150%]">
                             Read More
