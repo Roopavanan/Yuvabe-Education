@@ -25,7 +25,8 @@ const fetchPost = async (slug: string) => {
   return result?.data?.postBy || null;
 };
 
-const PostPage = async ({ params }: { params: { slug: string } }) => {
+const PostPage = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   const post = await fetchPost(params.slug);
 
   if (!post) {
