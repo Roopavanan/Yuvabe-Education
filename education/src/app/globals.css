@@ -101,6 +101,22 @@
   border-radius: 40.76px 12.23px;
 }
 
+.blog ul {
+  list-style: disc;
+}
+
+.blog>ul>li:nth-child(1) {
+  margin-top: 20px;
+}
+
+.blog li {
+  font-family: 'Nunito Sans';
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 400;
+  color: black;
+}
+
 .blog p {
   font-family: 'Nunito Sans';
   font-size: 18px;

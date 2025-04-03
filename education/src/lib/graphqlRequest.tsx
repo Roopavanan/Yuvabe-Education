@@ -77,7 +77,7 @@ export const GET_JDS_BY_SLUG = `
 `;
 
 export const GET_NEWS = `query News {
-  newsletters {
+  newsletters(first: 100, where: {status: PUBLISH}) {
     nodes {
       groupforNews {
         content
@@ -87,6 +87,8 @@ export const GET_NEWS = `query News {
         month
         year
         date
+        heading
+        subHeading
       }
       featuredImage {
         node {

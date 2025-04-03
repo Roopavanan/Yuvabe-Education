@@ -96,7 +96,7 @@ const JDS: React.FC = () => {
                         dangerouslySetInnerHTML={{ __html: job.excerpt }}
                       ></p>
                       {/* Read More Button */}
-                      <Link href={`get-involved/join-us/${job.slug}`}>
+                      <Link href={`join-us/${job.slug}`}>
                         <div className="bg-[#592AC7] py-[18px] px-8 w-[142px] rounded-[15px] mt-2">
                           <p className="font-primary font-semibold text-white text-[14px] leading-[150%]">
                             Read More

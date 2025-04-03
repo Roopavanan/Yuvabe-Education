@@ -12,6 +12,8 @@ interface NewsletterData {
     month: string;
     year: string;
     date: string;
+    heading: string;
+    subHeading: string;
   };
   featuredImage?: {
     node: {
@@ -103,29 +105,29 @@ const Newsletters: React.FC = () => {
                 <div key={index}>
                   <div className="flex flex-row gap-x-[77px] justify-between min-h-[456px] z-10 flex-wrap xl:flex-nowrap lg:w-[100%] md:w-[41%] gap-y-4 w-full">
                     {/* Left */}
-                    <div className="flex flex-col  rounded-[20px] w-full  bg-transparent xl:w-[34%] md:max-h-[400px] xl:max-h-full justify-center">
+                    <div className="flex flex-col  rounded-[20px] w-full  bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full justify-center z-10">
                       {newsletter.featuredImage &&
                         newsletter.featuredImage.node && (
                           <img
                             src={newsletter.featuredImage.node.sourceUrl}
                             alt={newsletter.featuredImage.node.altText}
-                            className="h-full rounded-t-[20px] rounded-tl-[20px] w-full z-10 max-h-[265px] max-w-[265px]"
-                            width={265}
-                            height={265}
+                            className="h-full rounded-t-[20px] rounded-tl-[20px] w-full z-10"
+                            width={347}
+                            height={326}
                           />
                         )}
                       {/* Title */}
-                      {/* <div className="flex flex-col gap-x-2  py-6 px-3">
+                      <div className="flex flex-col gap-x-2  py-6 px-3">
                         <h2 className="uppercase font-primary font-semibold text-black text-[20px] leading-[25.98px] xl:text-center">
-                          YUVABEAT
+                          {newsletter.groupforNews.heading}
                         </h2>
                         <p className="font-secondary font-medium text-black text-[14px] leading-[25.98px] pb-6 xl:text-center">
-                          Embracing fresh beginnings!
+                          {newsletter.groupforNews.subHeading}
                         </p>
-                      </div> */}
+                      </div>
                     </div>
                     {/* Right */}
-                    <div className="flex flex-col gap-y-8 justify-center w-full xl:w-[59%]">
+                    <div className="flex flex-col gap-y-8 justify-center w-full xl:w-[59%] z-10">
                       {/* Date and Content */}
                       <div className="flex flex-col gap-y-6 px-3    ">
                         <h3 className="font-primary font-semibold text-black text-4xl leading-[120%]">
