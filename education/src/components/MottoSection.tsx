@@ -6,68 +6,74 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 const MottoSection = () => {
-  const pathRef = useRef(null);
-  const planeRef = useRef(null);
-  const sectionsRef = useRef([]);
+  const pathRef = useRef<SVGPathElement>(null);
+  const planeRef = useRef<HTMLImageElement>(null);
+  const sectionsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const path = pathRef.current;
-    const pathLength = path.getTotalLength();
+    const plane = planeRef.current;
 
-    // Set initial state for line drawing
-    gsap.set(path, {
-      strokeDasharray: pathLength,
-      strokeDashoffset: pathLength,
-    });
+    if (path && plane) {
+      const pathLength = path.getTotalLength();
 
-    // Animate line drawing on scroll
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      ease: "power2.out",
-      duration: 3,
-      scrollTrigger: {
-        trigger: "#wave-section",
-        start: "top center",
-        end: "bottom center",
-        scrub: 2,
-      },
-    });
+      // Set initial state for line drawing
+      gsap.set(path, {
+        strokeDasharray: pathLength,
+        strokeDashoffset: pathLength,
+      });
 
-    // Animate paper plane along the wave path
-    gsap.to(planeRef.current, {
-      motionPath: {
-        path: path,
-        align: path,
-        alignOrigin: [0.5, 0.5],
-        autoRotate: true,
-      },
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "#wave-section",
-        start: "top center",
-        end: "bottom center",
-        scrub: 2,
-      },
-    });
+      // Animate line drawing on scroll
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: "power2.out",
+        duration: 3,
+        scrollTrigger: {
+          trigger: "#wave-section",
+          start: "top center",
+          end: "bottom center",
+          scrub: 2,
+        },
+      });
+
+      // Animate paper plane along the wave path
+      gsap.to(plane, {
+        motionPath: {
+          path: path,
+          align: path,
+          alignOrigin: [0.5, 0.5],
+          autoRotate: true,
+        },
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#wave-section",
+          start: "top center",
+          end: "bottom center",
+          scrub: 2,
+        },
+      });
+    }
 
     // Animate content sections on scroll (fade-in + slide-up)
-    sectionsRef.current.forEach((section, index) => {
-      gsap.fromTo(
-        section,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            end: "top 50%",
-            scrub: 1,
-          },
-        }
-      );
+    sectionsRef.current.forEach((section) => {
+      if (section) {
+        gsap.fromTo(
+          section,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              end: "top 50%",
+              scrub: 1,
+            },
+          }
+        );
+      }
     });
   }, []);
 
@@ -109,7 +115,13 @@ const MottoSection = () => {
         ].map((item, index) => (
           <div
             key={index}
-            ref={(el) => (sectionsRef.current[index] = el)}
+            ref={(el) => {
+              if (el) {
+                if (sectionsRef.current) {
+                  sectionsRef.current[index] = el;
+                }
+              }
+            }}
             className={`flex items-center justify-between py-16 opacity-0 ${
               index % 2 === 0 ? "flex-row-reverse" : "flex-row"
             }`}
