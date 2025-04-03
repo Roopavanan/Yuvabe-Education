@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+  --font-primary: Poppins, sans-serif;
+  --font-secondary: Nunito Sans, sans-serif;
+}
+
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+}
+
+
+@layer utilities {
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(30px, 1fr));
+    gap: 6px;
+  }
+
+  .calendar-day {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .calendar-day.active {
+    background-color: #592AC7;
+    color: white;
+  }
+
+  .calendar-day.highlight {
+    background-color: #8B5CF6;
+    color: white;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .program-card {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 0.4s ease-out;
+  }
+
+  .program-card.hidden {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  .program-card.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.bg-color {
+  background-color: #FFF9EA;
+}
+
+.border-radius-18 {
+  border-radius: 18.33px;
+}
+
+.border-radius-1240 {
+  border-radius: 12.23px 40.76px;
+}
+
+.box-shadow-default {
+  box-shadow: 6.52088px 6.52088px 35.0497px rgba(0, 0, 0, 0.1);
+}
+
+.box-shadow-secondary {
+  box-shadow: 6.92682px 6.92682px 37.2317px rgba(0, 0, 0, 0.1);
+}
+
+.box-shadow-card:hover {
+  box-shadow: 8.58791px 8.58791px 46.16px rgba(0, 0, 0, 0.1);
+}
+
+/* .blog-list-block>div:nth-child(5) {
+  background-color: #592AC7;
+}
+
+.blog-list-block>div:nth-child(5)>div:nth-child(2)>p,
+.blog-list-block>div:nth-child(5)>div:nth-child(2)>h2 {
+  color: white;
+} */
+
+.blog-list-block>div:nth-child(3n+2)>a>.blog-list-image {
+  border-radius: 40.76px 12.23px;
+}
+
+.blog p {
+  font-family: 'Nunito Sans';
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 400;
+  color: black;
+  margin-top: 20px;
+}
+
+.blog>p:nth-child(1) {
+  margin-top: 0;
+}
+
+.blog h1,
+.blog h2,
+.blog h3,
+.blog h4,
+.blog h5,
+.blog h6 {
+  font-family: 'Poppins';
+  font-weight: 600;
+  line-height: 120%;
+  font-size: 32px;
+  color: black;
+  margin-top: 20px;
+}
