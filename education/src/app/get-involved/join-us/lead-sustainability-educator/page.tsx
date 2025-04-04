@@ -1,10 +1,10 @@
 export default function lead_sustainability_educator() {
   return (
     <div>
-      <div className="bg-color py-32">
-        <div className="max-w-[1240px] flex flex-col m-auto gap-y-4">
+      <div className="bg-color pb-16 xl:pb-32 md:pb-24 xl:pt-32 pt-16 md:pt-24">
+        <div className="max-w-[1240px] flex flex-col m-auto gap-y-16 md:gap-y-24 lg:gap-y-24">
           <div className="flex flex-col gap-x-4">
-            <h1 className="text-[#592AC7] text-[48px] leading-[120%] font-semibold text-center">
+            <h1 className="text-[#592AC7] text-[48px] leading-[120%] font-semibold text-center font-primary">
               Lead Sustainability Educator
             </h1>
             <div className="blog">

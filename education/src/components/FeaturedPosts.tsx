@@ -145,7 +145,7 @@ const FeaturedPosts: React.FC = () => {
       <main>
         <h1>Featured Posts</h1>
         {/* Wrapper */}
-        <div className="bg-color py-32">
+        <div className="bg-color  pb-16 xl:pb-32 md:pb-24 xl:pt-32 pt-16 md:pt-24">
           <div className="max-w-[1240px] flex flex-col m-auto">
             <div className=" flex flex-col gap-x-16 relative">
               <h1 className="text-[#592AC7] text-[64px] leading-[120%] font-semibold text-center ">

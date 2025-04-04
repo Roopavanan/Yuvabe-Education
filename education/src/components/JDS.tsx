@@ -71,7 +71,7 @@ const JDS: React.FC = () => {
 
       <main>
         <div className="bg-white">
-          <div className="bg-[#FFF9EA] py-32 relative">
+          <div className="bg-[#FFF9EA]  pb-16 xl:pb-32 md:pb-24 xl:pt-32 pt-16 md:pt-24 relative">
             <div className="max-w-[1028px] flex flex-col m-auto ">
               <div className="flex flex-col gap-y-32 justify-between p-5 md:p-8 flex-wrap xl:p-0">
                 <h2 className="text-black text-2xl md:text-[64px] leading-[120%] font-semibold text-center font-primary z-10">

@@ -10,11 +10,11 @@ export default function Join_Us() {
     <>
       {/* Wrapper */}
       <div className="bg-whitepb-16 xl:pb-32 md:pb-24 xl:pt-[85px] pt-16 md:pt-24">
-        <div className="max-w-[1180px] flex flex-col m-auto">
+        <div className="max-w-[1240px] flex flex-col m-auto">
           {/* Join Us */}
           <div className="flex flex-row gap-x-[150px] gap-y-16 justify-between p-5 md:pb-0 flex-wrap xl:flex-nowrap">
             {/* Left */}
-            <div className="flex flex-col gap-y-8 gap-x-4 w-full xl:w-[55%] justify-center">
+            <div className="flex flex-col gap-y-8 gap-x-4 w-full xl:w-[50%] justify-center">
               <h1 className="font-primary font-semibold leading-[120%] text-[40px]  md:text-[62px] lg:text-[64px] text-[#592AC7]">
                 Come Join Us!
               </h1>
@@ -32,7 +32,7 @@ export default function Join_Us() {
               </p>
             </div>
             {/* Right */}
-            <div className="w-full xl:w-[45%] flex justify-center  xl:justify-end">
+            <div className="w-full xl:w-[50%] flex justify-center  xl:justify-end">
               <Player
                 autoplay
                 speed={0.75}

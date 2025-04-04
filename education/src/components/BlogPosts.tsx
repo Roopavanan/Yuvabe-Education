@@ -128,7 +128,7 @@ const BlogPosts: React.FC = () => {
 
       <main>
         {/* Wrapper */}
-        <div className="bg-color py-32">
+        <div className="bg-color  pb-16 xl:pb-32 md:pb-24 xl:pt-32 pt-16 md:pt-24">
           <div className="max-w-[1028px] flex flex-col m-auto">
             <div>
               {/* Blog Cards */}

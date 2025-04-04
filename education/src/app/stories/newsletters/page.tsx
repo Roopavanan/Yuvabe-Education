@@ -92,7 +92,7 @@ const Newsletters: React.FC = () => {
   return (
     <div>
       {/* Wrapper */}
-      <div className="bg-color py-32">
+      <div className="bg-color  pb-16 xl:pb-32 md:pb-24 xl:pt-32 pt-16 md:pt-24">
         <div className="max-w-[1028px] flex flex-col m-auto">
           {/* Newsletter */}
           <div className=" flex flex-col gap-y-16 px-5">
@@ -103,7 +103,7 @@ const Newsletters: React.FC = () => {
             <div className="flex flex-col gap-32 relative  md:flex-row md:flex-wrap md:justify-between xl:flex-col xl:flex-nowrap">
               {newsletters.map((newsletter, index) => (
                 <div key={index}>
-                  <div className="flex flex-row gap-x-[77px] justify-between min-h-[456px] z-10 flex-wrap xl:flex-nowrap lg:w-[100%] md:w-[41%] gap-y-4 w-full">
+                  <div className="flex flex-row gap-x-[77px] justify-between min-h-[456px] z-10 flex-wrap xl:flex-nowrap lg:w-[100%] gap-y-4 w-full">
                     {/* Left */}
                     <div className="flex flex-col  rounded-[20px] w-full  bg-white xl:w-[34%] md:max-h-[400px] xl:max-h-full justify-center z-10">
                       {newsletter.featuredImage &&
@@ -111,7 +111,7 @@ const Newsletters: React.FC = () => {
                           <img
                             src={newsletter.featuredImage.node.sourceUrl}
                             alt={newsletter.featuredImage.node.altText}
-                            className="h-full rounded-t-[20px] rounded-tl-[20px] w-full z-10"
+                            className="h-full rounded-t-[20px] rounded-tl-[20px] w-full z-10 object-cover"
                             width={347}
                             height={326}
                           />
@@ -142,6 +142,7 @@ const Newsletters: React.FC = () => {
                         <Link
                           href={newsletter.groupforNews.link.url}
                           target="_blank"
+                          className="max-w-[142px]"
                         >
                           <div className="bg-[#592AC7] py-[18px] px-8 w-[142px] rounded-[15px]">
                             <p className="font-primary font-semibold text-white text-[14px] leading-[150%]">
@@ -178,7 +179,7 @@ const Newsletters: React.FC = () => {
                   viewBox="0 0 260 259"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute right-[-5%] top-[14%] scale-50 xl:scale-100"
+                  className="absolute right-[-5%] top-[10%] scale-50 xl:scale-100"
                 >
                   <rect
                     x="100.289"
@@ -224,7 +225,7 @@ const Newsletters: React.FC = () => {
                   viewBox="0 0 212 211"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute right-[5%] top-[72%] scale-50 xl:scale-100"
+                  className="absolute right-[5%] top-[70%] scale-50 xl:scale-100"
                 >
                   <circle cx="106.281" cy="105.5" r="105.5" fill="#F9A91E" />
                 </svg>
@@ -236,7 +237,7 @@ const Newsletters: React.FC = () => {
                   viewBox="0 0 234 262"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="absolute bottom-[-1.5%] left-[-5%] scale-50 xl:scale-100"
+                  className="absolute bottom-0 left-[-5%] scale-50 xl:scale-100"
                 >
                   <path
                     d="M233.362 0.140296L221.129 261.443L0.950294 120.197L233.362 0.140296Z"
